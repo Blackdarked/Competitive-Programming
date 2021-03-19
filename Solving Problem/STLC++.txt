@@ -1,0 +1,5 @@
+///These are must-use lib in C++
+
+1. cstdio, cstring, cstdlib, cassert
+2. algorithm, iostream, iomanip
+3. vector, queue, stack, set, map, string
