@@ -36,8 +36,7 @@
     },
     {
       "name": "Variable Substitution",
-      "description": "Many special strings can be substituted dynamically",
-      "command": "echo \"workspaceFolder: [workspaceFolder]\\nworkspaceFolderBasename: [workspaceFolderBasename]\\nfile: [file]\\nrelativeFile: [relativeFile]\\nfileBasename: [fileBasename]\\nfileBasenameNoExtension: [fileBasenameNoExtension]\\nfileDirname: [fileDirname]\\nfileExtname: [fileExtname]\\ncwd: [cwd]\\nlineNumber: [lineNumber]\""
+      "description": "Many special strings can be substituted dynamically"
     },
     {
       "name": "Only Single",
