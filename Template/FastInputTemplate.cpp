@@ -9,7 +9,7 @@ typedef vector<ii> vii;
 
 void FastScan(int &number) {
     bool negative = false;
-    register int c;
+    int c;
     number = 0;
     c = getchar();
     if (c == '-') {
