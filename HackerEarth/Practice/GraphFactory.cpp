@@ -17,4 +17,4 @@ int main() {
         printf("No\n");
     return 0;
 }
-//Note: Because of ambigous error, I cannot use std namespace, scanf & printf instead.
+//Note: Because of ambiguous error, I cannot use std namespace, scanf & printf instead.
