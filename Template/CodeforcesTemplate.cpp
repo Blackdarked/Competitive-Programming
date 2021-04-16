@@ -8,6 +8,7 @@ typedef pair<int, int> pi;
 typedef vector<int> vi;
 typedef vector<pi> vii;
 typedef vector<vi> vvi;
+typedef vector<vb> vvb;
 typedef queue<int> qi;
 typedef stack<int> si;
 

@@ -11,24 +11,17 @@ typedef vector<vi> vvi;
 typedef queue<int> qi;
 typedef stack<int> si;
 
-vvi adj; // graph represented as an adjacency list
-int n; // number of vertices
-
-vb visited;
-
-void dfs(int v) {
-    visited[v] = true;
-    for (int u : adj[v]) {
-        if (!visited[u])
-            dfs(u);
-    }
-}
+vvi adj;
 
 int main() {
 	cin.tie(0);
 	cout.tie(0);
 	ios_base::sync_with_stdio(0);
 
-    
-	return 0;
+	int n, m;
+	cin >> n >> m;
+	for (int i = 0; i < m; i++) {
+		
+	}
+		return 0;
 }
