@@ -11,11 +11,12 @@ typedef vector<vi> vvi;
 typedef vector<vb> vvb;
 typedef queue<int> qi;
 typedef stack<int> si;
+typedef deque<int> di;
 
 int main() {
-	cin.tie(0);
-	cout.tie(0);
-	ios_base::sync_with_stdio(0);
+	cin.tie(nullptr);
+	cout.tie(nullptr);
+	ios_base::sync_with_stdio(false);
 
 
 	return 0;
