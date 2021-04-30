@@ -19,10 +19,6 @@ typedef deque<int> di;
      
 int main() {
     cIO;
-    int T;
-    cin >> T;
-    while (T--) {
-        
-    }
+    int n;
     return 0;
 }

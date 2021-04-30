@@ -12,6 +12,7 @@ typedef vector<vb> vvb;
 typedef queue<int> qi;
 typedef stack<int> si;
 typedef deque<int> di;
+#define int long long;
 
 int main() {
 	cin.tie(nullptr);

@@ -19,10 +19,11 @@ typedef deque<int> di;
      
 int main() {
     cIO;
-    int T;
-    cin >> T;
-    while (T--) {
-        
-    }
+    int h, w;
+    cin >> h >> w;
+    if (w == 0)
+        cout << h * h * h;
+    vvi A(h, vi(w));
+    
     return 0;
 }

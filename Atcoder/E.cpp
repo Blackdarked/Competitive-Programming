@@ -12,17 +12,16 @@ typedef vector<tuple<int, int, int>> viii;
 typedef queue<int> qi;
 typedef stack<int> si;
 typedef deque<int> di;
-#define cIO         \
+#define cIO            \
     cin.tie(nullptr);  \
     cout.tie(nullptr); \
     ios_base::sync_with_stdio(false);
-     
-int main() {
+
+int main()
+{
     cIO;
-    int T;
-    cin >> T;
-    while (T--) {
-        
-    }
+    int N, M;
+    cin >> N >> M;
+    
     return 0;
 }

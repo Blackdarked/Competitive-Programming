@@ -19,10 +19,24 @@ typedef deque<int> di;
      
 int main() {
     cIO;
-    int T;
-    cin >> T;
-    while (T--) {
-        
+    int n;
+    cin >> n;
+    vi a(n, 0), b(n, 0), ans;
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
     }
+    for (int i = 0; i < n; i++) {
+        cin >> b[i];
+    }
+    int res = 0;
+    for (int i = 0; i <= 1000; i++) {
+        bool ok = true;
+        for (int j = 0; j < n; j++) 
+            if (i < a[j] || i > b[j])
+                ok = false;
+        if (ok)
+            res++;
+    }
+    cout << res;
     return 0;
 }
