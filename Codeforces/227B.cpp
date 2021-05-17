@@ -11,11 +11,27 @@ typedef vector<vi> vvi;
 typedef vector<vb> vvb;
 typedef queue<int> qi;
 
+ll pos[100000];
+
 int32_t main() {
 	cin.tie(nullptr);
 	cout.tie(nullptr);
 	ios_base::sync_with_stdio(false);
 
-
-	return 0;
+    ll n, m, Vasya = 0, Petya = 0;
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        int tmp;
+        cin >> tmp;
+        pos[tmp] = i + 1;
+    }
+    cin >> m;
+    for (int i = 0; i < m; i++) {
+        int q;
+        cin >> q;
+        Vasya += pos[q];
+        Petya += n - pos[q] + 1;
+    }
+        cout << Vasya << ' ' << Petya << '\n';
+    return 0;
 }

@@ -16,6 +16,6 @@ int32_t main() {
 	cout.tie(nullptr);
 	ios_base::sync_with_stdio(false);
 
-
+    
 	return 0;
 }

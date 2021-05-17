@@ -16,6 +16,12 @@ int32_t main() {
 	cout.tie(nullptr);
 	ios_base::sync_with_stdio(false);
 
-
-	return 0;
+    int t, x, a, b;
+    cin >> t;
+    while(t--) {
+        cin >> x >> a >> b;
+        int ans = a + (100 - x) * b;
+        cout << ans * 10 << '\n';
+    }
+    return 0;
 }

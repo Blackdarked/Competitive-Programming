@@ -16,6 +16,17 @@ int32_t main() {
 	cout.tie(nullptr);
 	ios_base::sync_with_stdio(false);
 
-
-	return 0;
+    int n, sum = 0, ans = 0;
+    cin >> n;
+    for (int i = 0; i < n; ++i) {
+        int tmp;
+        cin >> tmp;
+        sum += tmp;
+    }
+    for (int i = 1; i <= 5; ++i) {
+        if ((sum + i) % (n + 1) != 1)
+            ans++;
+    }
+    cout << ans;
+    return 0;
 }

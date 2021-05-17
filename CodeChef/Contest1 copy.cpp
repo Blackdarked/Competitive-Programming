@@ -16,6 +16,12 @@ int32_t main() {
 	cout.tie(nullptr);
 	ios_base::sync_with_stdio(false);
 
-
-	return 0;
+    ll t, n, x, k;
+    cin >> t;
+    while (t--) {
+        cin >> n >> x >> k;
+        int s = (n + 1) % k;
+        (x % k == 0 || x % k == s) ? cout << "YES\n" : cout << "NO\n";
+    }
+    return 0;
 }

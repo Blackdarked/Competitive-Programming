@@ -16,6 +16,14 @@ int32_t main() {
 	cout.tie(nullptr);
 	ios_base::sync_with_stdio(false);
 
-
-	return 0;
+    int n, a;
+    cin >> n;
+    double sum = 0;
+    for (int i = 0; i < n; ++i) {
+        cin >> a;
+        sum += a;
+    }
+    sum /= n;
+    cout << setprecision(12) << fixed << sum << '\n';
+    return 0;
 }
