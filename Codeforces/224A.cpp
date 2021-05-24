@@ -1,8 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-typedef unsigned long long ull;
-typedef long double ld;
 typedef vector<ll> vll;
 typedef vector<char> vc;
 typedef vector<bool> vb;
@@ -12,17 +10,18 @@ typedef vector<pi> vii;
 typedef vector<vi> vvi;
 typedef vector<vb> vvb;
 typedef queue<int> qi;
-typedef deque<int> di;
-typedef stack<int> sti;
-typedef set<int> si;
-const long long N = 1e5;
-int a[N];
 
 int32_t main() {
 	cin.tie(nullptr);
 	cout.tie(nullptr);
 	ios_base::sync_with_stdio(false);
 
+    int ab, bc, ca;
+    cin >> ab >> bc >> ca;
+    int a = sqrt(ab * bc / ca + 0.5);
+    int b = sqrt(bc * ca / ab + 0.5);
+    int c = sqrt(ca * ab / bc + 0.5);
+    cout << 4 * (a + b + c);
 
-	return 0;
+    return 0;
 }

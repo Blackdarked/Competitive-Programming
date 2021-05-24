@@ -23,6 +23,21 @@ int32_t main() {
 	cout.tie(nullptr);
 	ios_base::sync_with_stdio(false);
 
-
-	return 0;
+    int n, m;
+    cin >> n >> m;
+    for (int i = 0; i < m; i++) {
+        cin >> a[i];
+    }
+    ll res = 0, cur = 1;
+    for (int i = 0; i < m; i++) {
+        if (a[i] == cur)
+            continue;
+        if (a[i] > cur)
+            res += a[i] - cur;
+        if (a[i] < cur)
+            res += a[i] + (n - cur);
+        cur = a[i];
+    }
+    cout << res;
+    return 0;
 }

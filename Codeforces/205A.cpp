@@ -15,14 +15,29 @@ typedef queue<int> qi;
 typedef deque<int> di;
 typedef stack<int> sti;
 typedef set<int> si;
-const long long N = 1e5;
-int a[N];
 
 int32_t main() {
 	cin.tie(nullptr);
 	cout.tie(nullptr);
 	ios_base::sync_with_stdio(false);
 
+    int n;
+    cin >> n;
 
-	return 0;
+    int mntime(1000000001), cities, pos = 1, c = 1;
+    for (int i = 1; i <= n; i++) {
+        cin >> cities;
+        if (cities < mntime) {
+            mntime = cities;
+            pos = i;
+            c = 1;
+        }
+        else if (cities == mntime)
+            ++c;
+    }
+    if (c == 1)
+        cout << pos;
+    else
+        cout << "Still Rozdil";
+        return 0;
 }
