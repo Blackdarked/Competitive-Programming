@@ -31,6 +31,9 @@ int main(int argc, char** argv) {
 	cout.tie(nullptr);
 	ios_base::sync_with_stdio(false);
 
-	
+	size_t k = (argc > 1) ? atoi(argv[1]) : 0;
+    if (argv < k + 2) {
+        
+    }
 	return 0;
 }

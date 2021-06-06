@@ -18,19 +18,30 @@ typedef set<int> si;
 #define FOR(i, a, b) for (int i = a; i < b; ++i)
 const long long N = 1e5;
 int a[N];
-ll m, n, t;
 
-int intcmp(const void* a, const void* b) {
-	return *(int*)a < *(int*)b ? -1 :
-		   *(int*)a > *(int*)b ?  1 :
-		   						  0 ;
+bool operation(ll a, ll b) {
+    ll sum = 1LL * a * (a + 1) / 2;
+    if (sum < b) return false;
+    return sum % 2 == b % 2;
 }
 
-int main(int argc, char** argv) {
+int32_t main() {
 	cin.tie(nullptr);
 	cout.tie(nullptr);
 	ios_base::sync_with_stdio(false);
 
-	
+	int t;
+	cin >> t;
+	while (t--) {
+        ll a, b, count = 1;
+        cin >> a >> b;
+        ll dif = abs(a-b);
+        if (dif == 0) {
+            cout << "0\n";
+            continue;
+        }
+        while (!operation(count, dif)) ++count;
+        cout << count << '\n';
+    }
 	return 0;
 }

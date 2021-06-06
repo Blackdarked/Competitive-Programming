@@ -18,19 +18,19 @@ typedef set<int> si;
 #define FOR(i, a, b) for (int i = a; i < b; ++i)
 const long long N = 1e5;
 int a[N];
-ll m, n, t;
 
-int intcmp(const void* a, const void* b) {
-	return *(int*)a < *(int*)b ? -1 :
-		   *(int*)a > *(int*)b ?  1 :
-		   						  0 ;
-}
 
-int main(int argc, char** argv) {
+int32_t main() {
 	cin.tie(nullptr);
 	cout.tie(nullptr);
 	ios_base::sync_with_stdio(false);
 
-	
-	return 0;
+	string s;
+	cin >> s;
+    bool odd[26] = {false};
+    for (size_t i = 0; i < s.length(); ++i) {
+        odd[s[i] - 'a'] = !odd[s[i] - 'a'];
+    }
+    int oddcount = count(odd, odd + sizeof(odd) / sizeof(odd[0]), true);
+    return cout << (oddcount == 0 || (oddcount % 2) & 1 ? "First" : "Second"), 0;
 }

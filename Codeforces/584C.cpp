@@ -18,19 +18,15 @@ typedef set<int> si;
 #define FOR(i, a, b) for (int i = a; i < b; ++i)
 const long long N = 1e5;
 int a[N];
-ll m, n, t;
+ll m, n, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z;
 
-int intcmp(const void* a, const void* b) {
-	return *(int*)a < *(int*)b ? -1 :
-		   *(int*)a > *(int*)b ?  1 :
-		   						  0 ;
-}
-
-int main(int argc, char** argv) {
+int32_t main() {
 	cin.tie(nullptr);
 	cout.tie(nullptr);
 	ios_base::sync_with_stdio(false);
 
-	
+    string s1, s2;
+	cin >> n >> t >> s1 >> s2;
+    
 	return 0;
 }

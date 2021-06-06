@@ -16,21 +16,25 @@ typedef deque<int> di;
 typedef stack<int> sti;
 typedef set<int> si;
 #define FOR(i, a, b) for (int i = a; i < b; ++i)
-const long long N = 1e5;
+const long long N = 1e3;
 int a[N];
-ll m, n, t;
 
-int intcmp(const void* a, const void* b) {
-	return *(int*)a < *(int*)b ? -1 :
-		   *(int*)a > *(int*)b ?  1 :
-		   						  0 ;
-}
 
-int main(int argc, char** argv) {
+int32_t main() {
 	cin.tie(nullptr);
 	cout.tie(nullptr);
 	ios_base::sync_with_stdio(false);
 
-	
-	return 0;
+    int n, m;
+    cin >> n >> m;
+    FOR(i, 0, m) {
+        cin >> a[i];
+    }
+    sort(a, a + m);
+    int mn = a[n - 1] - a[0];
+    for (int i = 1; i <= m - n; ++i) {
+        if (mn > a[i + n - 1] - a[i])
+            mn = a[i + n - 1] - a[i];
+    }
+    return cout << abs(mn) << '\n', 0;
 }
