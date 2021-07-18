@@ -108,7 +108,13 @@ template<typename T>int findgcd(const T& _vector, const T& n) {
 
 
 void solve() {
-    
+    int t; cin >> t;
+    const string s[] = {"Sheldon", "Leonard", "Penny", "Rajesh", "Howard"};
+    while(t > 5) {
+        t /= 2;
+        t -= 2;
+    }
+    cout << s[t-1] << '\n';
 }
 
 
@@ -118,7 +124,7 @@ void solve() {
 int32_t main() {
 	FAST
 
-	//solve();
+	solve();
 
 	//int t; cin >> t;
 	//while(t--) {

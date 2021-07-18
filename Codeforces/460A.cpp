@@ -78,6 +78,7 @@ typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_
 
 
 void dbug() {cerr << '\n';}
+void reverse(string &a){reverse(a.begin(),a.end());}
 template<typename T>void chkmin(T &x,const T &y){if(y<x)x=y;}
 template<typename T>void chkmax(T &x,const T &y){if(y>x)x=y;}
 template<typename T>void sort(vector<T> &a){sort(a.begin(),a.end());}
@@ -108,7 +109,13 @@ template<typename T>int findgcd(const T& _vector, const T& n) {
 
 
 void solve() {
-    
+	int n, m; cin >> n >> m;
+    int count = 0;
+    for (int i=1; i<=n; ++i) {
+        ++count;
+        if (i % m == 0) ++n;
+    }
+    cout << count;
 }
 
 
@@ -118,11 +125,8 @@ void solve() {
 int32_t main() {
 	FAST
 
-	//solve();
-
-	//int t; cin >> t;
 	//while(t--) {
-	//	solve();
+		solve();
 	//}
 	return 0;
 }

@@ -108,7 +108,15 @@ template<typename T>int findgcd(const T& _vector, const T& n) {
 
 
 void solve() {
-    
+	int n, tmp; cin >> n;
+	vi v(n+1);
+	rep(i, 0, n) {
+		cin >> tmp;
+		++v[tmp];
+	}
+	int mx = *max_element(v.begin(), v.end());
+	int diff = n + 1 - count(v.begin(), v.end(), 0);
+	cout << max(min(mx, diff-1), min(mx-1, diff)) << '\n';
 }
 
 
@@ -118,12 +126,14 @@ void solve() {
 int32_t main() {
 	FAST
 
+	//Single TC
 	//solve();
 
-	//int t; cin >> t;
-	//while(t--) {
-	//	solve();
-	//}
+	//Multiple TC
+	int t; cin >> t;
+	while(t--) {
+		solve();
+	}
 	return 0;
 }
 

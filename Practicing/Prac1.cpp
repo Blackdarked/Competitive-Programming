@@ -32,8 +32,8 @@ int main(int argc, char** argv) {
 	ios_base::sync_with_stdio(false);
 
 	size_t k = (argc > 1) ? atoi(argv[1]) : 0;
-    if (argv < k + 2) {
-        
+    if (argc < k + 2) {
+		fprintf(stderr, )
     }
 	return 0;
 }

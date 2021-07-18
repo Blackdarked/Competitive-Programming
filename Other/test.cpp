@@ -78,6 +78,7 @@ typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_
 
 
 void dbug() {cerr << '\n';}
+void reverse(string &a){reverse(a.begin(),a.end());}
 template<typename T>void chkmin(T &x,const T &y){if(y<x)x=y;}
 template<typename T>void chkmax(T &x,const T &y){if(y>x)x=y;}
 template<typename T>void sort(vector<T> &a){sort(a.begin(),a.end());}
@@ -85,7 +86,6 @@ template<typename T>void reverse(vector<T> &a){reverse(a.begin(),a.end());}
 template<typename T,class Cmp>void sort(vector<T> &a,Cmp cmp){sort(a.begin(),a.end(),cmp);}
 template<typename T>void unique(vector<T> &a){a.resize(unique(a.begin(),a.end())-a.begin());}
 template<typename T>void intcmp(const T* a, const T* b) {return *(T*)a < *(T*)b ? -1 : *(T*)a > *(T*)b ? 1 : 0;}
-template<typename T>void gcd(T* a, T* b) {return b == 0 ? *(T*)a : *(T*)a % *(T*)b;}
 template<typename T>void lcm(T* a, T* b) {return (*(T*)a / gcd((T*)a, (T*)b)) * *(T*)b;}
 template<typename T>pbi VECFIND(const vector<T>& v, const T& mem) {
     pbi res;
@@ -94,21 +94,30 @@ template<typename T>pbi VECFIND(const vector<T>& v, const T& mem) {
     else {res.F = false; res.S = -1;}
     return res;
 }
-template<typename T>int findgcd(const T& _vector, const T& n) {
-	int res = 0;
-	rep(i, 1, n) {
-		res = gcd(_vector[i], res);
-		if (res == 1) return 1;
-	}
-	return res;
-}
 
 
 /*--------------------------------------Solve Part----------------------------------------*/
 
 
 void solve() {
-    
+    int n; cin >> n;
+    vi v(n);
+    for (int &i : v) {
+        cin >> i;
+    }
+    auto mx = *max_element(v.begin(), v.end());
+    auto mn = *min_element(v.begin(), v.end());
+    rep(i, 0, n) {
+        if (v[i] == mx) v[i] = mn;
+    }
+    ll res = 9999999999999, ress = 0;
+    for (int i=1; i<=mx; ++i) {
+        for (int j=0; j<v.size(); ++j) {
+            res += v[j] / i;
+        }
+        res = min(res, ress);
+    }
+    cout << res << '\n';
 }
 
 
@@ -118,12 +127,10 @@ void solve() {
 int32_t main() {
 	FAST
 
-	//solve();
-
-	//int t; cin >> t;
-	//while(t--) {
-	//	solve();
-	//}
+	int t; cin >> t;
+	while(t--) {
+		solve();
+	}
 	return 0;
 }
 
