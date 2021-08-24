@@ -30,22 +30,30 @@ typedef deque<int> di;
 #define EPS 1e-7
 #define PI 3.1415926535897932384626433832795
 #define MOD 1000000007
+#define N 200016
 
-ull c[100005] = {0};
+int a[N], f[N];
+
+void solve() {
+    int n, k = 0, ans = 0; cin >> n;
+    rep(i, 0, n) cin >> a[i];
+    sort(a, a+n);
+    for(int i=0, j=0; i<n; i=j) {
+        while(j<n && a[i]==a[j]) ++j;
+        f[k++] = j-i;
+    }
+    sort(f, f+k, greater<int>());
+    rep(i, 0, k)
+        ans = max(ans, f[i]*(i+1));
+    cout << n-ans << '\n';
+}
+
 
 int main() {
     FAST
-    ull n; cin >> n;
-	for(int i=0, x; i<n; ++i) {
-		cin >> x;
-		c[x] += x;
-	}
-	ull ans = 0, prev = 0;
-	for(int i=0; i<=100000; ++i) {
-		ull h = prev;
-		prev = ans;
-		ans = max(c[i] + h, ans);
-	}
-	cout << ans << '\n';
+    int T; cin >> T;
+    while (T--) {
+        solve();
+    }
     return 0;
 }

@@ -18,21 +18,21 @@
 */
 
 
-/*--------------------------------------Main Libraries------------------------------------*/
+/*------------------------------------------------------------Main Libraries------------------------------------------------------------*/
 
 
 #include<bits/stdc++.h>
 #include<ext/pb_ds/assoc_container.hpp>
 
 
-/*----------------------------------------Namespaces--------------------------------------*/
+/*---------------------------------------------------------------Namespace--------------------------------------------------------------*/
 
 
 using namespace std;
 using namespace __gnu_pbds;
 
 
-/*-----------------------------------------Typedefs---------------------------------------*/
+/*---------------------------------------------------------------Typedefs---------------------------------------------------------------*/
 
 
 typedef long long ll;
@@ -52,9 +52,10 @@ typedef deque<int> di;
 typedef stack<int> sti;
 typedef set<int> si;
 typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> indexed_set;
+typedef struct node {int value; struct node *next;}node;
 
 
-/*----------------------------------------Defines-----------------------------------------*/
+/*----------------------------------------------------------------Defines---------------------------------------------------------------*/
 
 
 #define FAST cin.tie(nullptr); cout.tie(nullptr); ios::sync_with_stdio(false);
@@ -68,13 +69,13 @@ typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_
 #define PB push_back
 #define F first
 #define S second
-#define INF (int*)1e9
+#define INF 1e9
 #define EPS 1e-7
 #define PI 3.1415926535897932384626433832795
 #define MOD 1000000007
 
 
-/*--------------------------------------Functions-----------------------------------------*/
+/*---------------------------------------------------------------Functions--------------------------------------------------------------*/
 
 
 void dbug() {cerr << '\n';}
@@ -102,23 +103,42 @@ template<typename T>int findgcd(const T& _vector, const T& n) {
 	}
 	return res;
 }
+template<typename T>bool isPowerofTwo(T* x) {return *(T*)x&&(!(*(T*)x&(*(T*)x-1)));}
+const int dx[] = {1,0,-1,0,1,1,-1,-1};
+const int dy[] = {0,-1,0,1,1,-1,-1,1};
 
 
-/*--------------------------------------Solve Part----------------------------------------*/
+/*--------------------------------------------------------------Solve Part--------------------------------------------------------------*/
 
 
-void solve() {
-    
+int maxSum(vi &v, int n) {
+    int minPrefSum = 0, res = numeric_limits<int>::min();
+    int prefSum[n];
+    prefSum[0] = v[0];
+    rep(i, 1, n) prefSum[i] = prefSum[i-1] + v[i];
+    rep(i, 0, n) {
+        res = max(res, prefSum[i] - minPrefSum);
+        minPrefSum = min(minPrefSum, prefSum[i]);
+    }
+    return res;
 }
 
 
-/*-----------------------------------------Driver-----------------------------------------*/
+void solve() {
+    int n; cin >> n;
+    vi v(n);
+    for(int &i : v) cin >> i;
+    cout << maxSum(v, n);
+}
+
+
+/*----------------------------------------------------------------Driver----------------------------------------------------------------*/
 
 
 int32_t main() {
 	FAST
 
-	//solve();
+	solve();
 
 	//int t; cin >> t;
 	//while(t--) {
@@ -128,4 +148,4 @@ int32_t main() {
 }
 
 
-/*------------------------------------------EOF-------------------------------------------*/
+/*-----------------------------------------------------------------EOF------------------------------------------------------------------*/

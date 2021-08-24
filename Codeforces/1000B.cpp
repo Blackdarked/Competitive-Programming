@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-typedef unsigned long long ull;
 typedef vector<ll> vll;
 typedef vector<char> vc;
 typedef vector<bool> vb;
@@ -30,22 +29,20 @@ typedef deque<int> di;
 #define EPS 1e-7
 #define PI 3.1415926535897932384626433832795
 #define MOD 1000000007
-
-ull c[100005] = {0};
-
+#define FAST         \
+    cin.tie(nullptr);  \
+    cout.tie(nullptr); \
+    ios_base::sync_with_stdio(false);
+     
 int main() {
     FAST
-    ull n; cin >> n;
-	for(int i=0, x; i<n; ++i) {
-		cin >> x;
-		c[x] += x;
-	}
-	ull ans = 0, prev = 0;
-	for(int i=0; i<=100000; ++i) {
-		ull h = prev;
-		prev = ans;
-		ans = max(c[i] + h, ans);
-	}
-	cout << ans << '\n';
+    int n, m; cin >> n >> m;
+    vi v(n);
+    for(int &i : v) cin >> i;
+
+    vi f[2];
+    v.emplace(v.begin(), 0); v.EB(m);
+    
+
     return 0;
 }

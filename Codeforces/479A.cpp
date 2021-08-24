@@ -31,21 +31,18 @@ typedef deque<int> di;
 #define PI 3.1415926535897932384626433832795
 #define MOD 1000000007
 
-ull c[100005] = {0};
+
+void solve() {
+    int a, b, c; cin >> a >> b >> c;
+    cout << max({a+b+c, a+b*c, a*b+c, a*b*c, (a+b)*c, a*(b+c)});
+}
+
 
 int main() {
-    FAST
-    ull n; cin >> n;
-	for(int i=0, x; i<n; ++i) {
-		cin >> x;
-		c[x] += x;
-	}
-	ull ans = 0, prev = 0;
-	for(int i=0; i<=100000; ++i) {
-		ull h = prev;
-		prev = ans;
-		ans = max(c[i] + h, ans);
-	}
-	cout << ans << '\n';
+    FAST solve();
+    //int T; cin >> T;
+    //while (T--) {
+    //    solve();
+    //}
     return 0;
 }

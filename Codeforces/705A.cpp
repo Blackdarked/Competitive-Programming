@@ -31,21 +31,34 @@ typedef deque<int> di;
 #define PI 3.1415926535897932384626433832795
 #define MOD 1000000007
 
-ull c[100005] = {0};
+const string d[] = {"I hate that", "I love that", "I hate it", "I love it"};
+
+void solve() {
+    int n; cin >> n;
+    string ans;
+    bool chk = false; // false = "I love" || None ;; true = "I hate"
+    for(int i=n; i>=1; --i) {
+        if (i == 1) break;
+        else if (chk == false) {
+            ans += d[0];
+            chk = true;
+        }
+        else {
+            ans += d[1];
+            chk = false;
+        }
+        ans += " ";
+    }
+    (chk == false) ? ans += d[2] : ans += d[3];
+    cout << ans << '\n';
+}
+
 
 int main() {
-    FAST
-    ull n; cin >> n;
-	for(int i=0, x; i<n; ++i) {
-		cin >> x;
-		c[x] += x;
-	}
-	ull ans = 0, prev = 0;
-	for(int i=0; i<=100000; ++i) {
-		ull h = prev;
-		prev = ans;
-		ans = max(c[i] + h, ans);
-	}
-	cout << ans << '\n';
+    FAST solve();
+    //int T; cin >> T;
+    //while (T--) {
+    //    solve();
+    //}
     return 0;
 }
