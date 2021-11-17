@@ -4,8 +4,7 @@ using namespace std;
 typedef pair<int, int> pii;
 #define FOR(n) for(int i=0; i<n; ++i)
 #define RNDRNG(a, b) a + rand() % b
-char c;
-int n, l, r, x = 0, y = 0;
+int n, x = 0, y = 0;
 
 
 int main() {
@@ -13,33 +12,51 @@ int main() {
     srand(time(0));
     
     cin >> n;
-    FOR(n) {
-        int x = RNDRNG(1000, 8999), y = RNDRNG(1000, 8999);
-        cout << ((x < y) ? y : x) << " - " << ((x < y) ? x : y) << '\n';
+    FOR(n) { //18
+        int x = RNDRNG(100, 899), y = RNDRNG(100, 899);
+        if (x >= 1000 || y >= 1000) {
+            ++n;
+            continue;
+        } 
+        else {
+            cout << ((x < y) ? y : x) << " - " << ((x < y) ? x : y) << '\n';
+        }
     }
 
     cin >> n;
     set<pii> sp;
-    FOR(n) {
-        int x = RNDRNG(2,9), y = RNDRNG(2,9);
-        pii c = make_pair(x, y);
-        if (sp.count(c) == 0) {
-            sp.insert(c);
-            cout << x << " * " << y << '\n';
+    while(n--) { //10
+        int x = RNDRNG(100, 900), y = RNDRNG(2, 9);
+        if (x * y <= 8100 || y == 10) {
+            pii c = make_pair(x, y);
+            if (sp.count(c) == 0) {
+                sp.insert(c);
+                cout << x << " * " << y << '\n';
+            }
         }
-        else continue;
+        else {
+            ++n;
+            continue;
+        }
     }
 
     sp.clear();
     cin >> n;
-    while(n--) {
-        int x = RNDRNG(2,4), y = x * (RNDRNG(2,9));
+    while(n--) { //10
+        int x = RNDRNG(2, 9), y = x * (RNDRNG(50, 100));
+        if (y > 1000 || x == 10) {
+            ++n;
+            continue;
+        }
         pii c = make_pair(x, y);
         if (sp.count(c) == 0) {
             sp.insert(c);
             cout << y << " / " << x << '\n';
         }
-        else ++n;
+        else {
+            ++n;
+            continue;
+        }
     }
     sp.clear();
     return 0;

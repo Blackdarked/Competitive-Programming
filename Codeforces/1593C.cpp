@@ -1,5 +1,7 @@
 #include<bits/stdc++.h>
 #include<ext/pb_ds/assoc_container.hpp>
+#pragma GCC optimize ("O3")
+#pragma GCC target ("sse4")
 
 using namespace std;
 using namespace __gnu_pbds;
@@ -21,6 +23,7 @@ typedef deque<int> di;
 typedef stack<int> sti;
 typedef set<int> si;
 typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> indexed_set;
+typedef struct node {int value; struct node *next;}node;
 
 #define FAST cin.tie(nullptr); cout.tie(nullptr); ios::sync_with_stdio(false);
 #define rep(i, begin, end) for (__typeof(end) i = (begin) - ((begin) > (end)); i != (end) - ((begin) > (end)); i += 1 - 2 * ((begin) > (end)))
@@ -28,55 +31,60 @@ typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_
 #define REVSORT(v) sort(v.begin(), v.end(), greater<int>())
 #define REV(v) reverse(v.begin(), v.end())
 #define SZ(v) (int)v.size()
+#define TRAV(v) for(auto &i : v)
+#define ALLVEC(v) v.begin(), v.end()
 #define MP make_pair
 #define EB emplace_back
 #define PB push_back
 #define F first
 #define S second
-#define INF (int*)1e9
+#define ins insert
+#define INF 1e9
 #define EPS 1e-7
 #define PI 3.1415926535897932384626433832795
 #define MOD 1000000007
 
-const int N = 1e5;
-vll p(N);
-ll n, m;
+void dbug() {cerr << '\n';}
+bool isPowerofTwo(ll x) {return x && (!(x & (x - 1)));}
 
-ll ct(ll n, ll x) {
-    return (n < x) ? 0 : n / x + ct(n / x, x);
-}
+template<class T> bool chkmin(T &x, const T &y) {return x > y ? x = y, 1 : 0;}
+template<class T> bool chkmax(T &x, const T &y) {return x < y ? x = y, 1 : 0;}
 
-// ll largestpow(ll n, ll p) {
-//     int x = 0;
-//     while(n) {
-//         n /= p;
-//         x += n;
-//     }
-//     return x;
-// }
+// x & y locale
+const int dx[] = {1,0,-1,0,1,1,-1,-1};
+const int dy[] = {0,-1,0,1,1,-1,-1,1};
 
-bool check(ll n) {
-    if (n < 2) return false;
-    for(ll i=2; i*i<=n; ++i) {
-        if (n % i == 0) return false;
-    }
-    return true;
-}
+//mt19937
+// auto random_address = [] { char *p = new char; delete p; return uint64_t(p); };
+// const uint64_t SEED = chrono::steady_clock::now().time_since_epoch().count() * (random_address() | 1);
+// mt19937_64 rng(SEED);
+// mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
 
-void prime() {
-    cin >> n >> m;
-    for (ll i=2; i<=m; ++i) {
-        if (check(i) == true) p.EB(i);
-    }
-}
+#define N 1e5;
 
 void solve() {
-    
+    ll n, k; cin >> n >> k; vll v(k);
+    TRAV(v) {
+        cin >> i;
+    }
+    TRAV(v) {
+        i = n - i;
+    }
+    SORT(v);
+    ll pos = 0;
+    rep(i, 0, k) {
+        pos += v[i];
+        if (pos >= n) {
+            cout << i << '\n';
+            return;
+        }
+    }
+    cout << k << '\n';
 }
 
 int32_t main() {
-	FAST
+	FAST 
+    int t; cin >> t;
+    while(t--) solve();
 	return 0;
 }
-//2 3 4 5 6 7 8 9 10
-//2 + 2^2 + 2 + 2^3 + 2

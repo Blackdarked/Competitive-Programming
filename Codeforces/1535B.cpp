@@ -333,7 +333,18 @@ typedef struct node {int value; struct node *next;}node;
 #define N 1e5;
 
 void solve() {
-    
+    int n; cin >> n;
+    vi v(n); VEC(v) cin >> i;
+    sort(ALLVEC(v), [](int x, int y){
+        return x % 2 < y % 2;
+    });
+    int ans = 0;
+    rep(i, 0, n) {
+        rep(j, i+1, n) {
+            ans += __gcd(v[i], v[j] * 2) > 1;
+        }
+    }
+    cout << ans << '\n';
 }
 
 

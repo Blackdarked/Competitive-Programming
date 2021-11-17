@@ -279,13 +279,13 @@ typedef struct node {int value; struct node *next;}node;
 //     return r ? 1 : (f[n] * modInverse(f[r], p) % p * modInverse(f[n - r], p) % p) % p;
 // }
 
-// ll gcd(ll a, ll b) {
-//     return b == 0 ? a : a % b;
-// }
+ll gcd(ll a, ll b) {
+    return b == 0 ? a : a % b;
+}
 
-// ll lcm(ll a, ll b) {
-//     return (a / gcd(a, b)) * b;
-// }
+ll lcm(ll a, ll b) {
+    return (a / gcd(a, b)) * b;
+}
 
 // ll extgcd(ll a, ll b, ll *x, ll *y) {
 //     if (a == 0) {
@@ -333,7 +333,20 @@ typedef struct node {int value; struct node *next;}node;
 #define N 1e5;
 
 void solve() {
-    
+    int n, a, b; cin >> n >> a >> b;
+    string s; cin >> s;
+
+    if (b >= 0) {
+        cout << (a + b) * n << '\n';
+        return;
+    }
+    else {
+        int d = 0;
+        rep(i, 0, n-1) 
+            if (s[i] != s[i+1]) ++d;
+        cout << a * n + b * ((d + 3) / 2) << '\n';
+        return;
+    }
 }
 
 
@@ -341,7 +354,9 @@ void solve() {
 
 
 int32_t main() {
-	FAST solve();
+	FAST 
+    int t; cin >> t;
+    while(t--) solve();
 	return 0;
 }
 

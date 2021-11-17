@@ -3,10 +3,12 @@
 
 using namespace std;
 
-long long a[100][100];
-long long b[100];
-long long B[100];
-long long c[100];
+typedef long long ll;
+
+ll a[100][100];
+ll b[100];
+ll B[100];
+ll c[100];
 map <string, int> mp[100];
 int m = 0, n = 0;
 string s[100];
@@ -15,14 +17,14 @@ void in();
 void solve();
 void rutGon();
 
-void in(){
-    cout << endl;
+void in() {
+    cout << '\n';
     for (int i = 0; i < m; i++){
         for (int j = 0; j < n; j++)
-            cout << a[i][j] << " ";
-        cout << endl;
+            cout << a[i][j] << ' ';
+        cout << '\n';
     }
-    cout << endl;
+    cout << '\n';
 }
 
 string intToString(int n){
@@ -34,13 +36,13 @@ string intToString(int n){
     return s;
 }
 
-long long ucln(long long a, long long b){
+ll ucln(ll a, ll b){
     if (a == 0 && b == 0)
         return 0;
     if (a * b == 0)
         return (a == 0) ? a : b;
     while (a % b != 0){
-        long long d =  a % b;
+        ll d =  a % b;
         a = b;
         b = d;
     }
@@ -110,7 +112,7 @@ void matrix(string str){
                     }
                     nt = s[V][i] + nt;
                     mp[V][nt] += k * k2 * b[V];
-                    // cout << k << "---" << k2 << "---" << nt << endl;
+                    // cout << k << "---" << k2 << "---" << nt << '\n';
                     nt = "";
                 }   
             } else if (s[V][i] >= 'a' && s[V][i] <= 'z'){
@@ -121,7 +123,7 @@ void matrix(string str){
                     nt = s[V][i] + nt;
                     mp[V][nt] += k * b[V];
                     nt = "";
-                    // cout << k << "---2--   " << nt << endl;
+                    // cout << k << "---2--   " << nt << '\n';
             } else if (s[V][i] >= 'A' && s[V][i] <= 'Z'){
                 nt = s[V][i] + nt;
                 mp[V][nt] = k * b[V];
@@ -130,8 +132,8 @@ void matrix(string str){
                 k = 1;
         }
         // for (map <string, int> :: iterator it = mp[V].begin(); it != mp[V].end(); it++)
-        //     cout << it->first << " " << it->second << endl; 
-        // cout << "---------------------" << endl;
+        //     cout << it->first << " " << it->second << '\n'; 
+        // cout << "---------------------" << '\n';
     }
     map <string, int> M;
     m = 0;
@@ -189,7 +191,7 @@ void solve(){
     for (int i = 0; i < n; i++)
         if (c[i] < 0)
             c[i] = -c[i];
-    long long k = c[0];
+    ll k = c[0];
     for (int i = 1; i < n; i++)
         k = ucln(k, c[i]);
     for (int i = 0; i < n; i++)
@@ -199,7 +201,7 @@ void solve(){
 }
 
 void rutGon(){
-    long long k;
+    ll k;
     for (int i = 0; i < m; i++){
         for (int j = 0; j < n; j++)
             if (a[i][j] != 0){
@@ -258,10 +260,10 @@ string PTHH(string str){
 }
 
 int main(){
-    cout << endl;
+    cout << '\n';
     string s;
     getline(cin, s);
     cout << PTHH(s);
-    cout << endl << endl << " ";
+    cout << "\n\n ";
     return 0;
 }

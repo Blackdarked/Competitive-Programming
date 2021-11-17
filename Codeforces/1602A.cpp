@@ -1,5 +1,7 @@
 #include<bits/stdc++.h>
 #include<ext/pb_ds/assoc_container.hpp>
+#pragma GCC optimize ("O3")
+#pragma GCC target ("sse4")
 
 using namespace std;
 using namespace __gnu_pbds;
@@ -29,7 +31,7 @@ typedef struct node {int value; struct node *next;}node;
 #define REVSORT(v) sort(v.begin(), v.end(), greater<int>())
 #define REV(v) reverse(v.begin(), v.end())
 #define SZ(v) (int)v.size()
-#define VEC(v) for(auto &i : v)
+#define TRAV(v) for(auto &i : v)
 #define ALLVEC(v) v.begin(), v.end()
 #define MP make_pair
 #define EB emplace_back
@@ -43,9 +45,10 @@ typedef struct node {int value; struct node *next;}node;
 #define MOD 1000000007
 
 void dbug() {cerr << '\n';}
-void chkmin(int &x, const int &y) {if (y < x) x = y;}
-void chkmax(int &x, const int &y) {if (y > x) x = y;}
 bool isPowerofTwo(ll x) {return x && (!(x & (x - 1)));}
+
+template<class T> bool chkmin(T &x, const T &y) {return x > y ? x = y, 1 : 0;}
+template<class T> bool chkmax(T &x, const T &y) {return x < y ? x = y, 1 : 0;}
 
 // x & y locale
 const int dx[] = {1,0,-1,0,1,1,-1,-1};
@@ -60,33 +63,25 @@ const int dy[] = {0,-1,0,1,1,-1,-1,1};
 #define N 1e5;
 
 void solve() {
-    ll a, b, c; cin >> a >> b >> c;
-    int mx = max({a, b, c});
-    if (a == mx && b == mx && c == mx) {
-        ++a; ++b; ++c; 
-    } 
-    else if (a == mx) {
-        a = 0;
-        b = mx - b + 1;
-        c = mx - c + 1;
-    }
-    else if (b == mx) {
-        b = 0;
-        a = mx - a + 1;
-        c = mx - c + 1;
-    }
-    else {
-        c = 0;
-        a = mx - a + 1;
-        b = mx - b + 1;
-    }
-    cout << a << ' ' << b << ' ' << c << '\n'; 
-
+    string s, sc, a, b; cin >> s; sc = s;
+    SORT(s); cout << s[0] << ' ';
+    int idx;
+    rep(i, 0, sc.size()) {
+        if (sc[i] == s[0]) {
+            idx = i;
+            break;
+        }
+    }   
+    cout << sc.erase(idx, 1) << '\n';
 }
 
 int32_t main() {
-	FAST 
+#ifdef LOCAL_DEBUG
+    freopen("C:/Users/bigax/Documents/GitHub/Competitive-Programming/Codeforces/I.inp", "r", stdin);
+    freopen("C:/Users/bigax/Documents/GitHub/Competitive-Programming/Codeforces/O.out", "w", stdout);
+#endif
+	FAST
     int t; cin >> t;
-    while(t--) solve();
+    while (t--) solve();
 	return 0;
 }

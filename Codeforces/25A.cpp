@@ -1,8 +1,12 @@
 #include<bits/stdc++.h>
 #include<ext/pb_ds/assoc_container.hpp>
+#pragma GCC optimize ("O3")
+#pragma GCC target ("sse4")
+
 
 using namespace std;
 using namespace __gnu_pbds;
+
 
 typedef long long ll;
 typedef unsigned long long ull;
@@ -23,13 +27,14 @@ typedef set<int> si;
 typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> indexed_set;
 typedef struct node {int value; struct node *next;}node;
 
+
 #define FAST cin.tie(nullptr); cout.tie(nullptr); ios::sync_with_stdio(false);
 #define rep(i, begin, end) for (__typeof(end) i = (begin) - ((begin) > (end)); i != (end) - ((begin) > (end)); i += 1 - 2 * ((begin) > (end)))
 #define SORT(v) sort(v.begin(), v.end())
 #define REVSORT(v) sort(v.begin(), v.end(), greater<int>())
 #define REV(v) reverse(v.begin(), v.end())
 #define SZ(v) (int)v.size()
-#define VEC(v) for(auto &i : v)
+#define TRAV(v) for(auto &i : v)
 #define ALLVEC(v) v.begin(), v.end()
 #define MP make_pair
 #define EB emplace_back
@@ -42,14 +47,19 @@ typedef struct node {int value; struct node *next;}node;
 #define PI 3.1415926535897932384626433832795
 #define MOD 1000000007
 
-void dbug() {cerr << '\n';}
-void chkmin(int &x, const int &y) {if (y < x) x = y;}
-void chkmax(int &x, const int &y) {if (y > x) x = y;}
+
+void dbug() {cerr << "n";}
 bool isPowerofTwo(ll x) {return x && (!(x & (x - 1)));}
+
+
+template<class T> bool chkmin(T &x, const T &y) {return x > y ? x = y, 1 : 0;}
+template<class T> bool chkmax(T &x, const T &y) {return x < y ? x = y, 1 : 0;}
+
 
 // x & y locale
 const int dx[] = {1,0,-1,0,1,1,-1,-1};
 const int dy[] = {0,-1,0,1,1,-1,-1,1};
+
 
 //mt19937
 // auto random_address = [] { char *p = new char; delete p; return uint64_t(p); };
@@ -57,36 +67,47 @@ const int dy[] = {0,-1,0,1,1,-1,-1,1};
 // mt19937_64 rng(SEED);
 // mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
 
+
 #define N 1e5;
 
+
 void solve() {
-    ll a, b, c; cin >> a >> b >> c;
-    int mx = max({a, b, c});
-    if (a == mx && b == mx && c == mx) {
-        ++a; ++b; ++c; 
-    } 
-    else if (a == mx) {
-        a = 0;
-        b = mx - b + 1;
-        c = mx - c + 1;
+    int n; cin >> n;
+    int a[n+1], c0 = 0, c1 = 0;
+    rep(i, 1, n+1) {
+        cin >> a[i];
+        a[i] %= 2;
     }
-    else if (b == mx) {
-        b = 0;
-        a = mx - a + 1;
-        c = mx - c + 1;
+    rep(i, 1, n+1) {
+        if (c0 == 2 || c1 == 2) break;
+        c0 += (a[i] == 0);
+        c1 += (a[i] == 1);
+    }
+    cerr << c0 << ' ' << c1 << '\n';
+    if (c0 == 2) {
+        rep(i, 1, n+1) {
+            if (a[i] != 0) {
+                cout << i;
+                return;
+            }
+        }
     }
     else {
-        c = 0;
-        a = mx - a + 1;
-        b = mx - b + 1;
+        rep(i, 1, n+1) {
+            if (a[i] != 1) {
+                cout << i;
+                return;
+            }
+        }
     }
-    cout << a << ' ' << b << ' ' << c << '\n'; 
-
 }
 
+
 int32_t main() {
-	FAST 
-    int t; cin >> t;
-    while(t--) solve();
-	return 0;
+#ifdef LOCAL_DEBUG
+    freopen("C:/Users/bigax/Documents/GitHub/Competitive-Programming/Codeforces/I.inp", "r", stdin);
+    freopen("C:/Users/bigax/Documents/GitHub/Competitive-Programming/Codeforces/O.out", "w", stdout);
+#endif
+    FAST solve();
+    return 0;
 }
