@@ -3,8 +3,10 @@
 #pragma GCC optimize ("O3")
 #pragma GCC target ("sse4")
 
+
 using namespace std;
 using namespace __gnu_pbds;
+
 
 typedef long long ll;
 typedef unsigned long long ull;
@@ -25,6 +27,7 @@ typedef set<int> si;
 typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> indexed_set;
 typedef struct node {int value; struct node *next;}node;
 
+
 #define FAST cin.tie(nullptr); cout.tie(nullptr); ios::sync_with_stdio(false);
 #define rep(i, begin, end) for (__typeof(end) i = (begin) - ((begin) > (end)); i != (end) - ((begin) > (end)); i += 1 - 2 * ((begin) > (end)))
 #define SORT(v) sort(v.begin(), v.end())
@@ -39,20 +42,24 @@ typedef struct node {int value; struct node *next;}node;
 #define F first
 #define S second
 #define ins insert
-#define INF 1e9
+#define INF (ll)1e17
 #define EPS 1e-7
 #define PI 3.1415926535897932384626433832795
 #define MOD 1000000007
 
-void dbug() {cerr << '\n';}
+
+void dbug() {cerr << "n";}
 bool isPowerofTwo(ll x) {return x && (!(x & (x - 1)));}
+
 
 template<class T> bool chkmin(T &x, const T &y) {return x > y ? x = y, 1 : 0;}
 template<class T> bool chkmax(T &x, const T &y) {return x < y ? x = y, 1 : 0;}
 
+
 // x & y locale
 const int dx[] = {1,0,-1,0,1,1,-1,-1};
 const int dy[] = {0,-1,0,1,1,-1,-1,1};
+
 
 //mt19937
 // auto random_address = [] { char *p = new char; delete p; return uint64_t(p); };
@@ -60,16 +67,21 @@ const int dy[] = {0,-1,0,1,1,-1,-1,1};
 // mt19937_64 rng(SEED);
 // mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
 
-#define N 1e5;
+
+#define N 4004;
+ll dp[4004];
+int n, a, b, c;
 
 void solve() {
-    int n; cin >> n;
-    vi v(n); TRAV(v) cin >> i;
-    int g = 0;
-    rep(i, 0, n) {
-        g = __gcd(g, abs(v[i] - v[0]));
+    cin >> n >> a >> b >> c;
+    memset(dp, -1, sizeof(dp));
+    dp[0] = 0;
+    rep(i, 0, n+3) {
+        if (i - b >= 0) dp[i] = max(dp[i], dp[i-b] + 1);
+        if (i - c >= 0) dp[i] = max(dp[i], dp[i-c] + 1);
+        if (i - a >= 0) dp[i] = max(dp[i], dp[i-a] + 1);
     }
-    cout << (g ? g : -1) << '\n';
+    cout << dp[n] << '\n';
 }
 
 
@@ -78,8 +90,6 @@ int32_t main() {
     freopen("C:/Users/bigax/Documents/GitHub/Competitive-Programming/Codeforces/I.inp", "r", stdin);
     freopen("C:/Users/bigax/Documents/GitHub/Competitive-Programming/Codeforces/O.out", "w", stdout);
 #endif
-    FAST
-    int t; cin >> t;
-    while(t--) solve();
+    FAST solve();
     return 0;
 }
