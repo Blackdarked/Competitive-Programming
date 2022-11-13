@@ -42,8 +42,20 @@ typedef set<int> si;
 #define MOD 1000000007
 
 
+template <typename T> void ckmin(T &a, const T &b) { a = min(a, b); }
+template <typename T> void ckmax(T &a, const T &b) { a = max(a, b); }
+
+
 void solve() {
-    int n; cin >>m
+    int n, H, M; cin >> n >> H >> M;
+    int time = 60 * H + M, ans = 24 * 60;
+    rep(i, 0, n) {
+        cin >> H >> M;
+        int temp = 60 * H + M - time;
+        if (temp < 0) temp += 24 * 60;
+        ckmin(ans, temp);
+    }
+    cout << ans / 60 << ' ' << ans % 60 << '\n';
 }
 
 
@@ -52,6 +64,8 @@ int32_t main() {
     freopen("C:/GitHub/Competitive-Programming/Codeforces/I.inp", "r", stdin);
     freopen("C:/GitHub/Competitive-Programming/Codeforces/O.out", "w", stdout);
 #endif
-    FAST solve();
+    FAST
+    int t; cin >> t;
+    while(t--) solve();
     return 0;
 }

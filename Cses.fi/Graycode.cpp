@@ -43,7 +43,15 @@ typedef set<int> si;
 
 
 void solve() {
-    int n; cin >>m
+    int n; cin >> n;
+    auto gen = [](int n) {
+        rep(i, 0, 1 << n) {
+            rep(j, n - 1, 0) {
+                cout << (((1 << j)&i) > 0) << '\n';
+            }
+        }
+    };
+    gen(n);
 }
 
 

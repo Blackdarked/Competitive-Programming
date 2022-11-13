@@ -41,25 +41,40 @@ typedef set<int> si;
 #define PI 3.1415926535897932384626433832795
 #define MOD 1000000007
 
+
+template <typename T> void ckmin(T &a, const T &b) { a = min(a, b); }
+template <typename T> void ckmax(T &a, const T &b) { a = max(a, b); }
+
+
 void solve() {
-    int a, b; cin >> a >> b;
-    auto add = [](int a, int b) {
-        int t1 = 0, t2 = 0;
-        do {
-            t1 = a ^ b;
-            t2 = a & b; t2 <<= 1;
-            a = t1; b = t2;
-        }while(t2 != 0);
-        return a;
-    };
-    cout << add(a, b) << '\n';
+    int n; cin >> n;
+    char c[n+1][n+1];
+    rep(i, 1, n+1) {
+        rep(j, 1, n+1) {
+            cin >> c[i][j];
+        }
+    }
+    rep(i, 1, n+1) {
+        rep(j, 1, n+1) {
+            int cnt{0};
+            if (c[i-1][j] == 'o') ++cnt;
+            if (c[i][j-1] == 'o') ++cnt;
+            if (c[i+1][j] == 'o') ++cnt;
+            if (c[i][j+1] == 'o') ++cnt;
+            if (cnt & 1) {
+                cout << "NO";
+                return;
+            }
+        }
+    }
+    cout << "YES";
 }
 
 
 int32_t main() {
 #ifdef LOCAL_DEBUG
-    freopen("C:/Users/bigax/Documents/GitHub/Competitive-Programming/Codeforces/I.inp", "r", stdin);
-    freopen("C:/Users/bigax/Documents/GitHub/Competitive-Programming/Codeforces/O.out", "w", stdout);
+    freopen("C:/GitHub/Competitive-Programming/Codeforces/I.inp", "r", stdin);
+    freopen("C:/GitHub/Competitive-Programming/Codeforces/O.out", "w", stdout);
 #endif
     FAST solve();
     return 0;

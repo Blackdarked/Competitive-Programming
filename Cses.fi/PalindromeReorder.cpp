@@ -43,7 +43,34 @@ typedef set<int> si;
 
 
 void solve() {
-    int n; cin >>m
+    string s, t; cin >> s;
+    int c[26] = {0}, cnt = 0; //count odd numbers
+    TRAV(s) {
+        ++c[i - 'A']; //count the number occurences
+    }
+    rep(i, 0, 26) {
+        cnt += c[i] & 1; //check if a number occurs odd time.
+    }
+    if (cnt > 1) {
+        cout << "NO SOLUTION";
+        return;
+    }
+    rep(i, 0, 26) {
+        if (c[i] & 1 ^ 1) {
+            rep(j, 0, c[i] / 2) {
+                t += (char)(i + 'A');
+            }
+        }
+    }
+    cout << t;
+    rep(i, 0, 26) {
+        if (c[i] & 1) {
+            rep(j, 0, c[i]) {
+                t += (char)(i + 'A');
+            }
+        }
+    }
+    REV(t); cout << t;
 }
 
 

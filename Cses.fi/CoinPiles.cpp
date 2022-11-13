@@ -43,7 +43,8 @@ typedef set<int> si;
 
 
 void solve() {
-    int n; cin >>m
+    ll a, b; cin >> a >> b;
+    cout << (((a + b) % 3 == 0 and 2 * a >= b and 2 * b >= a) ? "YES\n" : "NO\n");
 }
 
 
@@ -52,6 +53,8 @@ int32_t main() {
     freopen("C:/GitHub/Competitive-Programming/Codeforces/I.inp", "r", stdin);
     freopen("C:/GitHub/Competitive-Programming/Codeforces/O.out", "w", stdout);
 #endif
-    FAST solve();
+    FAST
+    int t; cin >> t;
+    while(t--) solve();
     return 0;
 }

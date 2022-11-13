@@ -1,18 +1,25 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
+
+
 using namespace std;
+
+
 typedef long long ll;
 typedef unsigned long long ull;
+typedef long double ld;
 typedef vector<ll> vll;
 typedef vector<char> vc;
 typedef vector<bool> vb;
 typedef pair<int, int> pi;
+typedef pair<bool, int> pbi;
 typedef vector<int> vi;
-typedef vector<pi> vii;
+typedef vector<pi> vpi;
 typedef vector<vi> vvi;
-typedef vector<tuple<int, int, int>> viii;
+typedef vector<vb> vvb;
 typedef queue<int> qi;
-typedef stack<int> si;
 typedef deque<int> di;
+typedef stack<int> sti;
+typedef set<int> si;
 
 
 #define FAST cin.tie(nullptr); cout.tie(nullptr); ios::sync_with_stdio(false);
@@ -21,12 +28,15 @@ typedef deque<int> di;
 #define REVSORT(v) sort(v.begin(), v.end(), greater<int>())
 #define REV(v) reverse(v.begin(), v.end())
 #define SZ(v) (int)v.size()
+#define TRAV(v) for(auto &i : v)
+#define ALLVEC(v) v.begin(), v.end()
 #define MP make_pair
 #define EB emplace_back
 #define PB push_back
 #define F first
 #define S second
-#define INF 1e9
+#define ins insert
+#define INF (ll)1e17
 #define EPS 1e-7
 #define PI 3.1415926535897932384626433832795
 #define MOD 1000000007
@@ -34,25 +44,36 @@ typedef deque<int> di;
 
 void solve() {
     int n; cin >> n;
-    string s;
-    unordered_map<string, int> mp;
+    string s; cin >> s;
+    ll ans = 0; vll v(n);
     rep(i, 0, n) {
-        cin >> s;
-        int p = mp[s]++;
-        if (!p) {
-            cout << "OK\n";
-        } else {
-            cout << s << p << '\n';
+        if (s[i] == 'L') {
+            v.EB((n - i - 1) - i);
+            ans += i;
+        }
+        else {
+            v.EB(i - (n - i - 1));
+            ans += (n - i - 1);
         }
     }
+    sort(v.begin(), v.end(), greater<int>());
+    rep(i, 0, n) {
+        if (v[i] > 0) {
+            ans += v[i];
+        }
+        cout << ans << ' ';
+    }
+    cout << '\n';
 }
 
 
-int main() {
-    FAST solve();
-    //int T; cin >> T;
-    //while (T--) {
-    //    solve();
-    //}
+int32_t main() {
+#ifdef LOCAL_DEBUG
+    freopen("C:/GitHub/Competitive-Programming/Codeforces/I.inp", "r", stdin);
+    freopen("C:/GitHub/Competitive-Programming/Codeforces/O.out", "w", stdout);
+#endif
+    FAST
+    int t; cin >> t;
+    while(t--) solve();
     return 0;
 }

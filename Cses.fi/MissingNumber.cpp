@@ -43,7 +43,13 @@ typedef set<int> si;
 
 
 void solve() {
-    int n; cin >>m
+    ll n, t; cin >> n;
+    ll ans = (n * (n + 1)) / 2, arr = 0;
+    rep(i, 1, n) {
+        cin >> t;
+        arr += t;
+    }
+    cout << ans - arr << '\n';
 }
 
 
