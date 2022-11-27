@@ -40,16 +40,28 @@ typedef set<int> si;
 #define EPS 1e-7
 #define PI 3.1415926535897932384626433832795
 #define MOD 1000000007
+#define nl '\n'
+
+
+template <typename T> void ckmin(T &a, const T &b) { a = min(a, b); }
+template <typename T> void ckmax(T &a, const T &b) { a = max(a, b); }
 
 
 void solve() {
-    int n; cin >> n;
-    if (n < 10) {
-        cout << n << '\n';
-        return;
-    }
-    else {
-        
+    int n; cin >> n; vll v(n); 
+    TRAV(v) cin >> i;      
+    if (n == 1) cout << "yes" << nl;
+    int l = 1, r = n - 1;
+    while (l < r) {
+        if (v[l] == v[r]) {
+            (l >= 0 and r <= n - 1) ? cout << "yes" : cout << "no";
+            cout << nl;
+            break;
+        }
+        else {
+            if (v[l] <= v[l - 1]) l++;
+            if (v[r] <= v[r + 1]) r--;
+        }
     }
 }
 

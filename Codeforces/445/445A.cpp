@@ -40,26 +40,40 @@ typedef set<int> si;
 #define EPS 1e-7
 #define PI 3.1415926535897932384626433832795
 #define MOD 1000000007
+#define nl '\n'
+
+
+template <typename T> void ckmin(T &a, const T &b) { a = min(a, b); }
+template <typename T> void ckmax(T &a, const T &b) { a = max(a, b); }
 
 
 void solve() {
-    int n; cin >> n;
-    vi v(n);
-    TRAV(v) {
-        cin >> i;
-    }
-    si s;
-    bool chk = false;
-    rep(i, n, 0) {
-        if (s.count(v[i]) == 1) {
-            cout << i + 1 << '\n';
-            chk = true;
-            break;
+    int n, m; cin >> n >> m;
+    char a[n][m];
+    rep(i, 0, n) rep(j, 0, m) cin >> a[i][j];
+    rep(i, 0, n) rep(j, 0, m) {
+        if (a[i][j] == '.') {
+            if (i == 0 and j == 0) a[i][j] = 'B';
+            else if (i == 0 or i == n - 1) {
+                if (a[i][j+1] == 'B' or a[i][j-1] == 'B') a[i][j] = 'W';
+                else a[i][j] = 'B';
+            }
+            else if (j == 0 or j == m - 1) {
+                if (a[i+1][j] == 'B' or a[i-1][j] == 'B') a[i][j] = 'W';
+                else a[i][j] = 'B';
+            }
+            else {
+                if (a[i+1][j] == 'B' or a[i-1][j] == 'B' or a[i][j+1] == 'B' or a[i][j-1] == 'B') a[i][j] = 'W';
+                else a[i][j] = 'B';
+            }
         }
-        s.insert(v[i]);
+        else continue;
     }
-    if (!chk) {
-        cout << 0 << '\n';
+    rep(i, 0, n) {
+        rep(j, 0, m) {
+            cout << a[i][j];
+        }
+        cout << nl;
     }
 }
 
@@ -69,8 +83,6 @@ int32_t main() {
     freopen("C:/GitHub/Competitive-Programming/Codeforces/I.inp", "r", stdin);
     freopen("C:/GitHub/Competitive-Programming/Codeforces/O.out", "w", stdout);
 #endif
-    FAST
-    int t; cin >> t;
-    while(t--) solve();
+    FAST solve();
     return 0;
 }
