@@ -43,7 +43,27 @@ typedef set<int> si;
 
 
 void solve() {
-    int n; cin >>m
+    int n; cin >> n;
+    string s; cin >> s;
+    ll ans = 0; vll v(n);
+    rep(i, 0, n) {
+        if (s[i] == 'L') {
+            v.EB((n - i - 1) - i);
+            ans += i;
+        }
+        else {
+            v.EB(i - (n - i - 1));
+            ans += (n - i - 1);
+        }
+    }
+    sort(v.begin(), v.end(), greater<int>());
+    rep(i, 0, n) {
+        if (v[i] > 0) {
+            ans += v[i];
+        }
+        cout << ans << ' ';
+    }
+    cout << '\n';
 }
 
 
@@ -52,6 +72,8 @@ int32_t main() {
     freopen("C:/GitHub/Competitive-Programming/Codeforces/I.inp", "r", stdin);
     freopen("C:/GitHub/Competitive-Programming/Codeforces/O.out", "w", stdout);
 #endif
-    FAST solve();
+    FAST
+    int t; cin >> t;
+    while(t--) solve();
     return 0;
 }

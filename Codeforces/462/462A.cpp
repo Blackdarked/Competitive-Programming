@@ -42,8 +42,32 @@ typedef set<int> si;
 #define MOD 1000000007
 
 
+template <typename T> void ckmin(T &a, const T &b) { a = min(a, b); }
+template <typename T> void ckmax(T &a, const T &b) { a = max(a, b); }
+
+
 void solve() {
-    int n; cin >>m
+    int n; cin >> n;
+    char c[n+1][n+1];
+    rep(i, 1, n+1) {
+        rep(j, 1, n+1) {
+            cin >> c[i][j];
+        }
+    }
+    rep(i, 1, n+1) {
+        rep(j, 1, n+1) {
+            int cnt{0};
+            if (c[i-1][j] == 'o') ++cnt;
+            if (c[i][j-1] == 'o') ++cnt;
+            if (c[i+1][j] == 'o') ++cnt;
+            if (c[i][j+1] == 'o') ++cnt;
+            if (cnt & 1) {
+                cout << "NO";
+                return;
+            }
+        }
+    }
+    cout << "YES";
 }
 
 

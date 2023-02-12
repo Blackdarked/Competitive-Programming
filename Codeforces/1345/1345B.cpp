@@ -42,8 +42,25 @@ typedef set<int> si;
 #define MOD 1000000007
 
 
+template <typename T> void ckmin(T &a, const T &b) { a = min(a, b); }
+template <typename T> void ckmax(T &a, const T &b) { a = max(a, b); }
+
+
 void solve() {
-    int n; cin >>m
+    int n; cin >> n;
+    vll v(100000);
+    rep(i, 0, 100000*1LL) {
+        v[i] = (i * (3 * i + 1) / 2);
+    }
+    ll ans{0};
+    while(n > 0) {
+        auto it = upper_bound(ALLVEC(v), n);
+        --it;
+        if (*it == 0) break;
+        n -= *it;
+        ++ans;
+    }
+    cout << ans << '\n';
 }
 
 
@@ -52,6 +69,8 @@ int32_t main() {
     freopen("C:/GitHub/Competitive-Programming/Codeforces/I.inp", "r", stdin);
     freopen("C:/GitHub/Competitive-Programming/Codeforces/O.out", "w", stdout);
 #endif
-    FAST solve();
+    FAST
+    int t; cin >> t;
+    while(t--) solve();
     return 0;
 }

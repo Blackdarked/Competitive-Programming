@@ -43,7 +43,12 @@ typedef set<int> si;
 
 
 void solve() {
-    int n; cin >>m
+    int n; cin >> n; vi v(n); TRAV(v) cin >> i; SORT(v);
+    int q; cin >> q;
+    rep(i, 0, q) {
+        int t; cin >> t;
+        cout << upper_bound(v.begin(), v.end(), t) - v.begin() << '\n';
+    }
 }
 
 

@@ -43,15 +43,36 @@ typedef set<int> si;
 
 
 void solve() {
-    int n; cin >>m
+    int n; cin >> n;
+    vi a(n), b(n);
+    rep(i, 0, n) {
+        cin >> a[i] >> b[i];
+    }
+    int l = 0, h = n;
+    while(l < h) {
+        int m = (l + h + 1) >> 1, j = 0;
+        bool c = 1;
+        rep(i, 1, m + 1) {
+            while(j < n and (a[j] < m - i or b[j] < i - 1)) ++j;
+            if (j == n) {
+                c = 0;
+                break;
+            }
+            ++j;
+        }
+        c ? l = m : h = m - 1;
+    }
+    cout << l << '\n';
 }
 
 
 int32_t main() {
 #ifdef LOCAL_DEBUG
-    freopen("C:/GitHub/Competitive-Programming/Codeforces/I.inp", "r", stdin);
-    freopen("C:/GitHub/Competitive-Programming/Codeforces/O.out", "w", stdout);
+    freopen("C:/Users/bigax/Documents/GitHub/Competitive-Programming/Codeforces/I.inp", "r", stdin);
+    freopen("C:/Users/bigax/Documents/GitHub/Competitive-Programming/Codeforces/O.out", "w", stdout);
 #endif
-    FAST solve();
+    FAST
+    int t; cin >> t;
+    while(t--) solve();
     return 0;
 }

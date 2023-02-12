@@ -43,7 +43,14 @@ typedef set<int> si;
 
 
 void solve() {
-    int n; cin >>m
+    int n; cin >> n;
+    string s; cin >> s; SORT(s);
+    if (n != 5 or s != "Timru") {
+        cout << "NO\n";
+    }
+    else {
+        cout << "YES\n";
+    }
 }
 
 
@@ -52,6 +59,8 @@ int32_t main() {
     freopen("C:/GitHub/Competitive-Programming/Codeforces/I.inp", "r", stdin);
     freopen("C:/GitHub/Competitive-Programming/Codeforces/O.out", "w", stdout);
 #endif
-    FAST solve();
+    FAST
+    int t; cin >> t;
+    while(t--) solve();
     return 0;
 }

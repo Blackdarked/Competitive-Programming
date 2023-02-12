@@ -41,17 +41,39 @@ typedef set<int> si;
 #define PI 3.1415926535897932384626433832795
 #define MOD 1000000007
 
-
 void solve() {
-    int n; cin >>m
+    string s; cin >> s; int t = SZ(s); bool ch = 0;
+    auto check = [](char c) {
+        int n = c - '0';
+        return !(n & 1);
+    };
+    if (check(s[t-1])) {
+        cout << "0\n";
+        return;
+    }
+    else if (check(s[0])) {
+        cout << "1\n";
+        return;
+    }
+    else {
+        rep(i, 1, SZ(s) - 1) {
+            if (check(s[i])) {
+                ch = 1;
+                break;
+            }
+        }
+    }
+    cout << (ch ? "2\n" : "-1\n");
 }
 
 
 int32_t main() {
 #ifdef LOCAL_DEBUG
-    freopen("C:/GitHub/Competitive-Programming/Codeforces/I.inp", "r", stdin);
-    freopen("C:/GitHub/Competitive-Programming/Codeforces/O.out", "w", stdout);
+    freopen("C:/Users/bigax/Documents/GitHub/Competitive-Programming/Codeforces/I.inp", "r", stdin);
+    freopen("C:/Users/bigax/Documents/GitHub/Competitive-Programming/Codeforces/O.out", "w", stdout);
 #endif
-    FAST solve();
+    FAST
+    int t; cin >> t;
+    while(t--) solve();
     return 0;
 }

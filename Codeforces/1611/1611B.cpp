@@ -43,15 +43,18 @@ typedef set<int> si;
 
 
 void solve() {
-    int n; cin >>m
+    ll a, b; cin >> a >> b;
+    cout << min({a, b, (a + b) / 4}) << '\n';
 }
 
 
 int32_t main() {
 #ifdef LOCAL_DEBUG
-    freopen("C:/GitHub/Competitive-Programming/Codeforces/I.inp", "r", stdin);
-    freopen("C:/GitHub/Competitive-Programming/Codeforces/O.out", "w", stdout);
+    freopen("C:/Users/bigax/Documents/GitHub/Competitive-Programming/Codeforces/I.inp", "r", stdin);
+    freopen("C:/Users/bigax/Documents/GitHub/Competitive-Programming/Codeforces/O.out", "w", stdout);
 #endif
-    FAST solve();
+    FAST
+    int t; cin >> t;
+    while(t--) solve();
     return 0;
 }

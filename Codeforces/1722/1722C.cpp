@@ -43,7 +43,24 @@ typedef set<int> si;
 
 
 void solve() {
-    int n; cin >>m
+    int n; cin >> n;
+    unordered_map<string, int> m;
+    string a[3][n]; 
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < n; j++) {
+            cin >> a[i][j];
+            m[a[i][j]]++;
+        }
+    }
+    for (int i = 0; i < 3; i++) {
+        int sum = 0;
+        for (int j = 0; j < n; j++) {
+            if (m[a[i][j]] == 1) sum += 3;
+            else if (m[a[i][j]] == 2) sum += 1; 
+        }
+        cout << sum << ' ';
+    }
+    cout << '\n';
 }
 
 
@@ -52,6 +69,8 @@ int32_t main() {
     freopen("C:/GitHub/Competitive-Programming/Codeforces/I.inp", "r", stdin);
     freopen("C:/GitHub/Competitive-Programming/Codeforces/O.out", "w", stdout);
 #endif
-    FAST solve();
+    FAST
+    int t; cin >> t;
+    while(t--) solve();
     return 0;
 }

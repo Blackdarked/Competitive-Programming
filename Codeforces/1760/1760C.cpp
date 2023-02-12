@@ -40,10 +40,23 @@ typedef set<int> si;
 #define EPS 1e-7
 #define PI 3.1415926535897932384626433832795
 #define MOD 1000000007
+#define nl '\n'
+
+
+template <typename T> void ckmin(T &a, const T &b) { a = min(a, b); }
+template <typename T> void ckmax(T &a, const T &b) { a = max(a, b); }
 
 
 void solve() {
-    int n; cin >>m
+    int n; cin >> n; vi v(n); TRAV(v) cin >> i; vi v2 = v; SORT(v2);
+    int mx1 = v2[n-1], mx2 = v2[n-2];
+    rep(i, 0, n) {
+        if (v[i] == mx1) cout << mx1 - mx2;
+        else if (v[i] == mx2) cout << mx2 - mx1;
+        else cout << v[i] - mx1;
+        cout << ' ';
+    }
+    cout << nl;
 }
 
 
@@ -52,6 +65,8 @@ int32_t main() {
     freopen("C:/GitHub/Competitive-Programming/Codeforces/I.inp", "r", stdin);
     freopen("C:/GitHub/Competitive-Programming/Codeforces/O.out", "w", stdout);
 #endif
-    FAST solve();
+    FAST
+    int t; cin >> t;
+    while(t--) solve();
     return 0;
 }
