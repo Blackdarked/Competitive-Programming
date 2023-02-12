@@ -40,42 +40,27 @@ typedef set<int> si;
 #define EPS 1e-7
 #define PI 3.1415926535897932384626433832795
 #define MOD 1000000007
+#define nl '\n'
+
+
+template <typename T> void ckmin(T &a, const T &b) { a = min(a, b); }
+template <typename T> void ckmax(T &a, const T &b) { a = max(a, b); }
 
 
 void solve() {
-    int n, m, rb, cb, rd, cd, c = 0; cin >> n >> m >> rb >> cb >> rd >> cd;
-    if (rb == rd || cb == cd) return;
-    do {
-        if (rb == n) {
-            if (cb == m) {
-                --rb;
-                --cb;
-            }
-            else {
-                --rb;
-                ++cb;
-            }
-        }
-        else if (cb == m) {
-            if (rb == n) {
-                --rb;
-                --cb;
-            }
-            else {
-                --cb;
-                ++rb;
-            }
-        }
-        ++c;
-    } while(rb != rd && cb != cd);
-    cout << c << '\n';
-}
+    int n, k, tmp; cin >> n >> k;
+    unordered_map<int, int> s;
+    rep(i, 0, n) {
+        cin >> tmp;
+        s[tmp[i]]++;
+    }
 
+}
 
 int32_t main() {
 #ifdef LOCAL_DEBUG
-    freopen("C:/Users/bigax/Documents/GitHub/Competitive-Programming/Codeforces/I.inp", "r", stdin);
-    freopen("C:/Users/bigax/Documents/GitHub/Competitive-Programming/Codeforces/O.out", "w", stdout);
+    freopen("C:/GitHub/Competitive-Programming/Codeforces/I.inp", "r", stdin);
+    freopen("C:/GitHub/Competitive-Programming/Codeforces/O.out", "w", stdout);
 #endif
     FAST
     int t; cin >> t;

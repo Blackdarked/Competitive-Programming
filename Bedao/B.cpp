@@ -40,36 +40,22 @@ typedef set<int> si;
 #define EPS 1e-7
 #define PI 3.1415926535897932384626433832795
 #define MOD 1000000007
+#define nl '\n'
+
+
+template <typename T> void ckmin(T &a, const T &b) { a = min(a, b); }
+template <typename T> void ckmax(T &a, const T &b) { a = max(a, b); }
 
 
 void solve() {
-    int n; cin >> n;
-    vi a(n), b(n);
-    rep(i, 0, n) {
-        cin >> a[i] >> b[i];
-    }
-    int l = 0, h = n;
-    while(l < h) {
-        int m = (l + h + 1) >> 1, j = 0;
-        bool c = 1;
-        rep(i, 1, m + 1) {
-            while(j < n and (a[j] < m - i or b[j] < i - 1)) ++j;
-            if (j == n) {
-                c = 0;
-                break;
-            }
-            ++j;
-        }
-        c ? l = m : h = m - 1;
-    }
-    cout << l << '\n';
+    
 }
 
 
 int32_t main() {
 #ifdef LOCAL_DEBUG
-    freopen("C:/Users/bigax/Documents/GitHub/Competitive-Programming/Codeforces/I.inp", "r", stdin);
-    freopen("C:/Users/bigax/Documents/GitHub/Competitive-Programming/Codeforces/O.out", "w", stdout);
+    freopen("C:/GitHub/Competitive-Programming/Codeforces/I.inp", "r", stdin);
+    freopen("C:/GitHub/Competitive-Programming/Codeforces/O.out", "w", stdout);
 #endif
     FAST
     int t; cin >> t;
