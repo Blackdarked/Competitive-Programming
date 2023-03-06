@@ -46,8 +46,30 @@ typedef set<int> si;
 template <typename T> void ckmin(T &a, const T &b) { a = min(a, b); }
 template <typename T> void ckmax(T &a, const T &b) { a = max(a, b); }
 
+int ans = 0;
+
+void print(int start, int end) {
+    cout << start << ' ' << end << nl;
+}
+
+void Tower(int n, int start, int end) {
+    if (n == 1) {
+        print(start, end);
+    }
+    else {
+        int aux = 6 - (start + end);
+        ++ans;
+        Tower(n - 1, start, aux);
+        print(start, end);
+        ++ans;
+        Tower(n - 1, aux, end);
+    }
+}
+
 void solve() {
-      
+    int n; cin >> n;
+    cout << (1 << n) - 1 << nl;
+    Tower(n, 1, 3);
 }
 
 
@@ -57,10 +79,5 @@ int32_t main() {
     freopen("C:/GitHub/Competitive-Programming/Codeforces/O.out", "w", stdout);
 #endif
     FAST solve();
-    int n; cin >> n;
-    int arr[n] = {1};
-    rep(i, 0, n) {
-        cout << arr[i] << ' ';
-    }
     return 0;
 }

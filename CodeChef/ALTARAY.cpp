@@ -46,21 +46,35 @@ typedef set<int> si;
 template <typename T> void ckmin(T &a, const T &b) { a = min(a, b); }
 template <typename T> void ckmax(T &a, const T &b) { a = max(a, b); }
 
-void solve() {
-      
-}
 
+void solve() {
+    int n; cin >> n;
+    ll a[n]; fill_n(a, n, 1);
+    vll v(n); TRAV(v) {
+        cin >> i;
+    }
+    for(int i = n - 2; i >= 0; i--) {
+        if (v[i] * v[i+1] < 0) {
+            a[i] = a[i+1] + 1;
+        }
+    }
+    rep(i, 0, n) {
+        cout << a[i] << ' ';
+    }
+    cout << nl;
+}
+    
 
 int32_t main() {
 #ifdef LOCAL_DEBUG
     freopen("C:/GitHub/Competitive-Programming/Codeforces/I.inp", "r", stdin);
     freopen("C:/GitHub/Competitive-Programming/Codeforces/O.out", "w", stdout);
 #endif
-    FAST solve();
-    int n; cin >> n;
-    int arr[n] = {1};
-    rep(i, 0, n) {
-        cout << arr[i] << ' ';
-    }
+    FAST
+    int t; cin >> t;
+    while(t--) solve();
     return 0;
 }
+
+//Verdict: AC
+//Note: Because -1e9 <= A[i] <= 1e9 it has to be stored by long long array

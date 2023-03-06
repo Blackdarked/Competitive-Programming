@@ -46,8 +46,17 @@ typedef set<int> si;
 template <typename T> void ckmin(T &a, const T &b) { a = min(a, b); }
 template <typename T> void ckmax(T &a, const T &b) { a = max(a, b); }
 
+
 void solve() {
-      
+    string s; cin >> s; SORT(s);
+    vector<string> ans;
+    do {
+        ans.push_back(s);
+    } while(next_permutation(ALLVEC(s)));
+    cout << ans.size() << nl;
+    TRAV(ans) {
+        cout << i << nl;
+    }
 }
 
 
@@ -57,10 +66,5 @@ int32_t main() {
     freopen("C:/GitHub/Competitive-Programming/Codeforces/O.out", "w", stdout);
 #endif
     FAST solve();
-    int n; cin >> n;
-    int arr[n] = {1};
-    rep(i, 0, n) {
-        cout << arr[i] << ' ';
-    }
     return 0;
 }

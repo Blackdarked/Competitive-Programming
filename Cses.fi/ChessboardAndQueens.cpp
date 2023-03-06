@@ -46,8 +46,33 @@ typedef set<int> si;
 template <typename T> void ckmin(T &a, const T &b) { a = min(a, b); }
 template <typename T> void ckmax(T &a, const T &b) { a = max(a, b); }
 
+string s[8];
+bool b[15];
+
 void solve() {
-      
+    rep(i, 0, 8) {
+        cin >> s[i];
+    }
+    int bd[8], ans = 0;
+    iota(bd, bd + 8, 0);
+    do {
+        bool check = 1;
+        rep(i, 0, 8) {
+            check &= (s[i][bd[i]] == '.'); //check if the coordination (x, y) is empty
+        }
+        memset(b, 0, 15);
+        rep(i, 0, 8) {
+            if (b[i+bd[i]]) check = 0; // check if there's at most 1 queen in each main diagonal
+            b[i+bd[i]] = 1;
+        }
+        memset(b, 0, 15);
+        rep(i, 0, 8) {
+            if (b[i+7-bd[i]]) check = 0; //check if there's at most 1 queen in each antidiagonal
+            b[i+7-bd[i]] = 1;
+        }
+        ans += check;
+    } while (next_permutation(bd, bd + 8));
+    cout << ans << nl;
 }
 
 
@@ -57,10 +82,5 @@ int32_t main() {
     freopen("C:/GitHub/Competitive-Programming/Codeforces/O.out", "w", stdout);
 #endif
     FAST solve();
-    int n; cin >> n;
-    int arr[n] = {1};
-    rep(i, 0, n) {
-        cout << arr[i] << ' ';
-    }
     return 0;
 }

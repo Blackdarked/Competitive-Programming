@@ -12,6 +12,7 @@ typedef vector<char> vc;
 typedef vector<bool> vb;
 typedef pair<int, int> pi;
 typedef pair<bool, int> pbi;
+typedef pair<ll, ll> pll;
 typedef vector<int> vi;
 typedef vector<pi> vpi;
 typedef vector<vi> vvi;
@@ -28,7 +29,7 @@ typedef set<int> si;
 #define REVSORT(v) sort(v.begin(), v.end(), greater<int>())
 #define REV(v) reverse(v.begin(), v.end())
 #define SZ(v) (int)v.size()
-#define TRAV(v) for(auto &i : v)
+#define TRAV(v) for(auto &e : v)
 #define ALLVEC(v) v.begin(), v.end()
 #define MP make_pair
 #define EB emplace_back
@@ -46,8 +47,60 @@ typedef set<int> si;
 template <typename T> void ckmin(T &a, const T &b) { a = min(a, b); }
 template <typename T> void ckmax(T &a, const T &b) { a = max(a, b); }
 
+
+ll n, m, k, q, l, r, x, y, z;
+const ll template_array_size = 1e6 + 9097;
+ll a[template_array_size];
+ll b[template_array_size];
+ll c[template_array_size];
+string s, t;
+ll ans = 0;
+
+const ll N = 5 * 1e5;
+
+vll edges[N];
+bool visited[N];
+
+void bfs(ll n) {
+    vll cmp;
+    queue<ll> q;
+    q.push(n);
+
+    while(!q.empty()) {
+        ll x = q.front(); q.pop();
+
+        if (visited[x]) continue;
+        visited[x] = true;
+        cmp.EB(x);
+
+        TRAV(edges[x]) {
+            if (!visited[e])
+                q.push(e);
+        }
+    }
+    TRAV(cmp) a[e] = cmp.size();
+}
+
 void solve() {
-      
+    cin >> n >> m;
+    rep(i, 0, m) {
+        cin >> k; vll v(k);
+        
+        rep(j, 0, k) {
+            cin >> v[j];
+            --v[j];
+        }
+
+        for(ll j = 0; j + 1 < k; ++j) {
+            edges[v[j]].EB(v[j + 1]);
+            edges[v[j + 1]].EB(v[j]);
+        }
+    }
+    memset(visited, 0, sizeof(visited));
+    rep(i, 0, n) {
+        if (!visited[i]) bfs(i);
+    }
+    rep(i, 0, n) cout << a[i] << ' ';
 }
 
 
@@ -57,10 +110,5 @@ int32_t main() {
     freopen("C:/GitHub/Competitive-Programming/Codeforces/O.out", "w", stdout);
 #endif
     FAST solve();
-    int n; cin >> n;
-    int arr[n] = {1};
-    rep(i, 0, n) {
-        cout << arr[i] << ' ';
-    }
     return 0;
 }

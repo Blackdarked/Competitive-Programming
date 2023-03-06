@@ -12,6 +12,7 @@ typedef vector<char> vc;
 typedef vector<bool> vb;
 typedef pair<int, int> pi;
 typedef pair<bool, int> pbi;
+typedef pair<ll, ll> pll;
 typedef vector<int> vi;
 typedef vector<pi> vpi;
 typedef vector<vi> vvi;
@@ -46,8 +47,45 @@ typedef set<int> si;
 template <typename T> void ckmin(T &a, const T &b) { a = min(a, b); }
 template <typename T> void ckmax(T &a, const T &b) { a = max(a, b); }
 
+const int N = 100000;
+
+ll c[N];
+vll edges[N];
+bool visited[N];
+
+ll dfs(ll n) {
+    ll mn = c[n];
+    visited[n] = true;
+
+    TRAV(edges[n]) {
+        if (!visited[i]) {
+            ckmin(mn, dfs(i));
+        }
+    }
+    return mn;
+}
+
 void solve() {
-      
+    int n, m; cin >> n >> m;
+    
+    rep(i, 0, n) {
+        cin >> c[i];
+    }
+
+    rep(i, 0, m) {
+        ll u, v; cin >> u >> v;
+        u--, v--;
+        edges[u].push_back(v);
+        edges[v].push_back(u);
+    }
+
+    ll ans = 0;
+    rep(i, 0, n) {
+        if (!visited[i]) {
+            ans += dfs(i);
+        }
+    }
+    cout << ans << nl;
 }
 
 
@@ -56,11 +94,7 @@ int32_t main() {
     freopen("C:/GitHub/Competitive-Programming/Codeforces/I.inp", "r", stdin);
     freopen("C:/GitHub/Competitive-Programming/Codeforces/O.out", "w", stdout);
 #endif
+    memset(visited, 0, sizeof(visited));
     FAST solve();
-    int n; cin >> n;
-    int arr[n] = {1};
-    rep(i, 0, n) {
-        cout << arr[i] << ' ';
-    }
     return 0;
 }

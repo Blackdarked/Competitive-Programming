@@ -46,8 +46,22 @@ typedef set<int> si;
 template <typename T> void ckmin(T &a, const T &b) { a = min(a, b); }
 template <typename T> void ckmax(T &a, const T &b) { a = max(a, b); }
 
+
 void solve() {
-      
+    int n, t; cin >> n >> t;
+    int a[n];
+    rep(i, 0, n-1) {
+        cin >> a[i];
+    }
+    int cur = 1;
+    while (cur < n) {
+        cur += a[cur-1];
+        if (cur == t) {
+            cout << "YES";
+            return;
+        }
+    }
+    cout << "NO";
 }
 
 
@@ -57,10 +71,5 @@ int32_t main() {
     freopen("C:/GitHub/Competitive-Programming/Codeforces/O.out", "w", stdout);
 #endif
     FAST solve();
-    int n; cin >> n;
-    int arr[n] = {1};
-    rep(i, 0, n) {
-        cout << arr[i] << ' ';
-    }
     return 0;
 }

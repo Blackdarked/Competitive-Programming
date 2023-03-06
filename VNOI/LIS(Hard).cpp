@@ -46,10 +46,18 @@ typedef set<int> si;
 template <typename T> void ckmin(T &a, const T &b) { a = min(a, b); }
 template <typename T> void ckmax(T &a, const T &b) { a = max(a, b); }
 
-void solve() {
-      
-}
 
+void solve() {
+    int n, res = 0; cin >> n;
+    vi v(n); TRAV(v) cin >> i;
+    vi v2(n + 1, INT_MAX); v2[0] = INT_MIN;
+    for(int i : v) {
+        int k = lower_bound(ALLVEC(v2), i) - v2.begin();
+        v2[k] = i;
+        res = max(res, k);
+    }
+    cout << res << nl;
+}
 
 int32_t main() {
 #ifdef LOCAL_DEBUG
@@ -57,10 +65,5 @@ int32_t main() {
     freopen("C:/GitHub/Competitive-Programming/Codeforces/O.out", "w", stdout);
 #endif
     FAST solve();
-    int n; cin >> n;
-    int arr[n] = {1};
-    rep(i, 0, n) {
-        cout << arr[i] << ' ';
-    }
     return 0;
 }

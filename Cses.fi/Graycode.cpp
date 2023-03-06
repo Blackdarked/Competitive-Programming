@@ -30,6 +30,7 @@ typedef set<int> si;
 #define SZ(v) (int)v.size()
 #define TRAV(v) for(auto &i : v)
 #define ALLVEC(v) v.begin(), v.end()
+#define nl '\n'
 #define MP make_pair
 #define EB emplace_back
 #define PB push_back
@@ -44,14 +45,14 @@ typedef set<int> si;
 
 void solve() {
     int n; cin >> n;
-    auto gen = [](int n) {
-        rep(i, 0, 1 << n) {
-            rep(j, n - 1, 0) {
-                cout << (((1 << j)&i) > 0) << '\n';
-            }
-        }
-    };
-    gen(n);
+    int m = 0;
+    rep(i, 0, 1 << n) {
+        m = (i ^ (i >> 1)); //1's cancelled out
+        cerr << "Test " << i << ": i = " << i << "; m = " << m << nl;
+        bitset<32> x(m);
+        string s = x.to_string();
+        cout << s.substr(32 - n) << nl;
+    } 
 }
 
 

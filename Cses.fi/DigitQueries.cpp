@@ -46,9 +46,39 @@ typedef set<int> si;
 template <typename T> void ckmin(T &a, const T &b) { a = min(a, b); }
 template <typename T> void ckmax(T &a, const T &b) { a = max(a, b); }
 
-void solve() {
-      
+ll a[18] = {1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000, 10000000000, 100000000000, 1000000000000, 10000000000000, 100000000000000, 1000000000000000, 10000000000000000, 100000000000000000};
+
+ll numLength(ll x) {
+    int count = 0 * 1LL;
+    while (x >= 10) {
+        x /= 10;
+        ++count;
+    }
+    return count;
 }
+
+ll sum(ll n) {
+    ll ans = ((n * (n + 1)) >> 1);
+    return ans;
+}
+
+void solve() {
+    ll n, n2, ans; cin >> n;
+    ll s = 0;
+    if (n <= 9) {
+        cout << n << nl; 
+        return;
+    }
+    else {
+        ll x = numLength(n);
+        s = (sum(a[x]) - sum(a[x + 1] - 1)) << (x - 1);
+        n2 = n - s;
+        ans = n2 / x + a[x];
+        string s = to_string(ans);
+        cout << s[n2 % x];
+    }
+}
+
 
 
 int32_t main() {
@@ -56,11 +86,8 @@ int32_t main() {
     freopen("C:/GitHub/Competitive-Programming/Codeforces/I.inp", "r", stdin);
     freopen("C:/GitHub/Competitive-Programming/Codeforces/O.out", "w", stdout);
 #endif
-    FAST solve();
-    int n; cin >> n;
-    int arr[n] = {1};
-    rep(i, 0, n) {
-        cout << arr[i] << ' ';
-    }
+    FAST
+    int t; cin >> t;
+    while(t--) solve();
     return 0;
 }

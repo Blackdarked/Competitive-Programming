@@ -46,8 +46,23 @@ typedef set<int> si;
 template <typename T> void ckmin(T &a, const T &b) { a = min(a, b); }
 template <typename T> void ckmax(T &a, const T &b) { a = max(a, b); }
 
-void solve() {
-      
+
+void solve() { // William's idea: halve the string and then use bitmask to solve
+    int n; cin >> n;
+    int a[n];
+    ll ans = 0, s = 0;
+    rep(i, 0, n) {
+        cin >> a[i], s += a[i];
+    }
+    rep(i, 0, (1 << n)) {
+        ll cs = 0;
+        rep(j, 0, n)
+            if (i >> j & 1) //Determine if the least bit is 1, then add it to the second sum
+                cs += a[j];
+        if (cs <= s / 2)
+            ans = max(ans, cs);
+    }
+    cout << s - 2 * ans << nl;
 }
 
 
@@ -57,10 +72,5 @@ int32_t main() {
     freopen("C:/GitHub/Competitive-Programming/Codeforces/O.out", "w", stdout);
 #endif
     FAST solve();
-    int n; cin >> n;
-    int arr[n] = {1};
-    rep(i, 0, n) {
-        cout << arr[i] << ' ';
-    }
     return 0;
 }
