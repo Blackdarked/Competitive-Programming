@@ -12,6 +12,7 @@ typedef vector<char> vc;
 typedef vector<bool> vb;
 typedef pair<int, int> pi;
 typedef pair<bool, int> pbi;
+typedef pair<ll, ll> pll;
 typedef vector<int> vi;
 typedef vector<pi> vpi;
 typedef vector<vi> vvi;
@@ -22,13 +23,13 @@ typedef stack<int> sti;
 typedef set<int> si;
 
 
-#define FAST cin.tie(nullptr); ios::sync_with_stdio(false);
+#define FAST cin.tie(nullptr); cout.tie(nullptr); ios::sync_with_stdio(false);
 #define rep(i, begin, end) for (__typeof(end) i = (begin) - ((begin) > (end)); i != (end) - ((begin) > (end)); i += 1 - 2 * ((begin) > (end)))
 #define SORT(v) sort(v.begin(), v.end())
 #define REVSORT(v) sort(v.begin(), v.end(), greater<int>())
 #define REV(v) reverse(v.begin(), v.end())
 #define SZ(v) (int)v.size()
-#define TRAV(v) for(auto &i : v)
+#define TRAV(v) for(auto &e : v)
 #define ALLVEC(v) v.begin(), v.end()
 #define MP make_pair
 #define EB emplace_back
@@ -47,26 +48,32 @@ template <typename T> void ckmin(T &a, const T &b) { a = min(a, b); }
 template <typename T> void ckmax(T &a, const T &b) { a = max(a, b); }
 
 
-void gen() {
-    srand(time(NULL));
-    freopen("C:/GitHub/Competitive-Programming/Codeforces/I.inp", "w", stdout);
-    ll a = rand() % 4294967296, b = rand() % 4294967296;
-    cout << a << ' ' << b;
-    
-}
+ll n, m, k, q, l, r, x, y, z;
+const ll template_array_size = 1e6 + 9097;
+ll a[template_array_size];
+ll b[template_array_size];
+ll c[template_array_size];
+string s, t;
+ll ans = 0;
+
 
 void solve() {
-    ll a, b; cin >> a >> b;
-    cout << a + b << nl;
+    int n; cin >> n; vi v(n); TRAV(v) cin >> e; SORT(v);
+    for (int i = v.size() - 2; i >= 0; i--) {
+        if (v[i] != v[v.size() - 1]) {
+            cout << v[i];
+            return;
+        }
+    }
+    cout << 0;
 }
 
 
 int32_t main() {
-    freopen("C:/GitHub/Competitive-Programming/Codeforces/I.inp", "r", stdin);
-    freopen("C:/GitHub/Competitive-Programming/Codeforces/O.out", "w", stdout);
-
-    gen();
-    FAST
-    solve();
+#ifdef LOCAL_DEBUG
+    freopen("C:/Users/Admin/Competitive-Programming/UIT/I.inp", "r", stdin);
+    freopen("C:/Users/Admin/Competitive-Programming/UIT/O.out", "w", stdout);
+#endif
+    FAST solve();
     return 0;
 }
