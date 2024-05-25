@@ -1,0 +1,1 @@
+{"name":"Local: InsertionLinkedList","url":"c:\\Users\\Admin\\Competitive-Programming\\UIT\\InsertionLinkedList.cpp","tests":[{"id":1712504165302,"input":"5\n1\n3\n4\n6\n7\n5","output":"1 3 4 5 6 7"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\Admin\\Competitive-Programming\\UIT\\InsertionLinkedList.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: speeding","url":"c:\\Users\\Admin\\Competitive-Programming\\USACO\\speeding.cpp","tests":[{"id":1712424213224,"input":"3 3\n40 75\n50 35\n10 45\n40 76\n20 30\n40 40","output":"5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\Admin\\Competitive-Programming\\USACO\\speeding.cpp","group":"local","local":true}

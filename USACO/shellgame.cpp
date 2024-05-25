@@ -44,8 +44,8 @@ typedef set<int> si;
 #define nl '\n'
 
 
-template <typename T> void ckmin(T &a, const T &b) { a = min(a, b); }
-template <typename T> void ckmax(T &a, const T &b) { a = max(a, b); }
+template <typename T> void ckmin(T& a, const T& b) { a = min(a, b); }
+template <typename T> void ckmax(T& a, const T& b) { a = max(a, b); }
 
 
 ll n, m, k, q, l, r, x, y, z;
@@ -57,21 +57,36 @@ string s, t;
 ll ans = 0;
 
 
+mt19937 rd(chrono::steady_clock::now().time_since_epoch().count());
+int Rand(int l, int r) { return l + rd() % (r - l + 1); }
+
+
 void solve() {
     int n; cin >> n;
+    vi arr = { 0,1,2 }, v(3);
     int cnt = 0;
     rep(i, 0, n) {
         int a, b, g; cin >> a >> b >> g;
-        if (g == a or g == b) 
+        a--; b--; g--;
+
+        swap(arr[a], arr[b]);
+        v[arr[g]]++;
     }
+    SORT(v);
+    cout << v[2];
 }
 
 
 int32_t main() {
-#ifdef LOCAL_DEBUG
-    freopen("C:/Users/Admin/Competitive-Programming/UIT/I.inp", "r", stdin);
-    freopen("C:/Users/Admin/Competitive-Programming/UIT/O.out", "w", stdout);
-#endif
+    // #ifdef LOCAL_DEBUG
+    //     freopen("C:/Users/Admin/Competitive-Programming/UIT/I.inp", "r", stdin);
+    //     freopen("C:/Users/Admin/Competitive-Programming/UIT/O.out", "w", stdout);
+    // #endif
+    // #ifdef USACO
+    // #define USACO
+    freopen("shell.in", "r", stdin);
+    freopen("shell.out", "w", stdout);
+    // #endif
     FAST solve();
     return 0;
 }

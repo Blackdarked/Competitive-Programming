@@ -1,0 +1,19 @@
+Phương thức thiết lập (Constructor) là một hàm đặc biệt của lớp. Hàm này tự động gọi khi khởi tạo một đối tượng. Có hai loại phương thức thiết lập: khởi tạo mặc định (Default Constructor) và khởi tạo sao chép (Copy Constructor).
+Phương thức hủy bỏ (Destructor) là một hàm đặc biệt, tự động được gọi trước khi giải phóng một đối tượng để giải phóng vùng nhớ trước khi đối tượng được hủy bỏ. Đặc điểm của hàm hủy là: 
+- Mỗi lớp chỉ có một hàm hủy
+- Hàm hủy không có kiểu, không có giá trị trả về và không có đối số
+- Tên hàm hủy cùng với tên lớp có một dấu ngã (~) ngay trước tên.
+
+
+class foo {
+private:  
+	int x;
+public:
+	foo(); // Constructor
+	foo(x); // Constructor
+	~foo(); // Destructor
+};
+
+foo::foo() : x{0} {} // Default Constructor
+foo::foo(x) : foo{x} {} // Copy Constructor
+foo::~foo() {}

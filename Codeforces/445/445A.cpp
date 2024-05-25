@@ -12,6 +12,7 @@ typedef vector<char> vc;
 typedef vector<bool> vb;
 typedef pair<int, int> pi;
 typedef pair<bool, int> pbi;
+typedef pair<ll, ll> pll;
 typedef vector<int> vi;
 typedef vector<pi> vpi;
 typedef vector<vi> vvi;
@@ -28,7 +29,7 @@ typedef set<int> si;
 #define REVSORT(v) sort(v.begin(), v.end(), greater<int>())
 #define REV(v) reverse(v.begin(), v.end())
 #define SZ(v) (int)v.size()
-#define TRAV(v) for(auto &i : v)
+#define TRAV(v) for(auto &e : v)
 #define ALLVEC(v) v.begin(), v.end()
 #define MP make_pair
 #define EB emplace_back
@@ -43,35 +44,34 @@ typedef set<int> si;
 #define nl '\n'
 
 
-template <typename T> void ckmin(T &a, const T &b) { a = min(a, b); }
-template <typename T> void ckmax(T &a, const T &b) { a = max(a, b); }
+template <typename T> void ckmin(T& a, const T& b) { a = min(a, b); }
+template <typename T> void ckmax(T& a, const T& b) { a = max(a, b); }
+
+
+ll n, m, k, q, l, r, x, y, z;
+const ll template_array_size = 1e6 + 9097;
+ll a[template_array_size];
+ll b[template_array_size];
+ll c[template_array_size];
+string s, t;
+
+
+mt19937 rd(chrono::steady_clock::now().time_since_epoch().count());
+int Rand(int l, int r) { return l + rd() % (r - l + 1); }
+string ans = { 'B', 'W' };
 
 
 void solve() {
     int n, m; cin >> n >> m;
-    char a[n][m];
-    rep(i, 0, n) rep(j, 0, m) cin >> a[i][j];
-    rep(i, 0, n) rep(j, 0, m) {
-        if (a[i][j] == '.') {
-            if (i == 0 and j == 0) a[i][j] = 'B';
-            else if (i == 0 or i == n - 1) {
-                if (a[i][j+1] == 'B' or a[i][j-1] == 'B') a[i][j] = 'W';
-                else a[i][j] = 'B';
-            }
-            else if (j == 0 or j == m - 1) {
-                if (a[i+1][j] == 'B' or a[i-1][j] == 'B') a[i][j] = 'W';
-                else a[i][j] = 'B';
-            }
-            else {
-                if (a[i+1][j] == 'B' or a[i-1][j] == 'B' or a[i][j+1] == 'B' or a[i][j-1] == 'B') a[i][j] = 'W';
-                else a[i][j] = 'B';
-            }
-        }
-        else continue;
-    }
+
+    char v[n][m];
     rep(i, 0, n) {
         rep(j, 0, m) {
-            cout << a[i][j];
+            cin >> v[i][j];
+            if (v[i][j] == '.') {
+                v[i][j] = ans[(i + j) & 1];
+            }
+            cout << v[i][j];
         }
         cout << nl;
     }
@@ -80,8 +80,8 @@ void solve() {
 
 int32_t main() {
 #ifdef LOCAL_DEBUG
-    freopen("C:/GitHub/Competitive-Programming/Codeforces/I.inp", "r", stdin);
-    freopen("C:/GitHub/Competitive-Programming/Codeforces/O.out", "w", stdout);
+    freopen("C:/Users/Admin/Competitive-Programming/UIT/I.inp", "r", stdin);
+    freopen("C:/Users/Admin/Competitive-Programming/UIT/O.out", "w", stdout);
 #endif
     FAST solve();
     return 0;

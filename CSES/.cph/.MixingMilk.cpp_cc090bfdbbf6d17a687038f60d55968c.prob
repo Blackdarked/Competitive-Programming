@@ -1,0 +1,1 @@
+{"name":"Local: MixingMilk","url":"c:\\Users\\Admin\\Competitive-Programming\\CSES\\MixingMilk.cpp","tests":[{"id":1713950310064,"input":"10 3\n11 4\n12 5","output":"0\n10\n2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\Admin\\Competitive-Programming\\CSES\\MixingMilk.cpp","group":"local","local":true}

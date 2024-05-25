@@ -16,6 +16,7 @@ for perm in it.permutations(range(8)):
 
 # Solution 2
 
+
 def extend_to_solution(perm):
     i = len(perm) - 1
     for j in range(i):
@@ -26,7 +27,7 @@ def extend_to_solution(perm):
 def extend(perm, n):
     if (len(perm) == n):
         print(perm)
-        exit()
+    
     
     for k in range(n):
         if k not in perm:

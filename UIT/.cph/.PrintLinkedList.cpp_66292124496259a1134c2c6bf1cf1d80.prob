@@ -1,0 +1,1 @@
+{"name":"Local: PrintLinkedList","url":"c:\\Users\\Admin\\Competitive-Programming\\UIT\\PrintLinkedList.cpp","tests":[{"id":1712502068081,"input":"5\n1 \n2 \n3 \n4 \n5","output":"1 2 3 4 5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\Admin\\Competitive-Programming\\UIT\\PrintLinkedList.cpp","group":"local","local":true}

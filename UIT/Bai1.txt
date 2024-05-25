@@ -1,0 +1,4 @@
+Có các lỗi sai sau:
+- int func1 (int) và float func1 (int): Chồng định nghĩa.
+- void func1 (int = 0, int): Sai cách truyền tham số.
+- void func2 (int, int = 0) và void func2 (int): Trình biên dịch báo lỗi do cách định nghĩa hàm nhập nhằng.

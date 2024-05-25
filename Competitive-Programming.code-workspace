@@ -112,7 +112,11 @@
       "xmemory": "cpp",
       "xstddef": "cpp",
       "xtr1common": "cpp",
-      "xtree": "cpp"
+      "xtree": "cpp",
+      "expected": "cpp",
+      "spanstream": "cpp",
+      "stacktrace": "cpp",
+      "stdfloat": "cpp"
     }
   }
 }
