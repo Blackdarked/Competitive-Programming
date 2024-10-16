@@ -1,0 +1,1 @@
+{"name":"Local: Test","url":"c:\\Users\\Admin\\Competitive-Programming\\Test.cpp","tests":[{"id":1717296570845,"input":"2\n10 AB\n15 BA","output":"-1"},{"id":1717296767259,"input":"4\n5 C\n6 B\n16 BAC\n4 A","output":"15"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\Admin\\Competitive-Programming\\Test.cpp","group":"local","local":true}

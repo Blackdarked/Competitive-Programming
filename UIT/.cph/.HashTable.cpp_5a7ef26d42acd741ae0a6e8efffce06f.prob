@@ -1,0 +1,1 @@
+{"name":"Local: HashTable","url":"c:\\Users\\Admin\\Competitive-Programming\\UIT\\HashTable.cpp","tests":[{"id":1719738753318,"input":"11 0.7 8\n12 38 27 23 44 8 91 51\n5\n23 48 51 27 91","output":"2\nKHONG\nKHONG\n2\n1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\Admin\\Competitive-Programming\\UIT\\HashTable.cpp","group":"local","local":true}

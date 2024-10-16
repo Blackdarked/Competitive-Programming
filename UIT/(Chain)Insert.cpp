@@ -158,15 +158,8 @@ void DeleteHashtable(Hashtable& ht) {
 }
 
 int Insert(Hashtable& ht, Hocsinh x) {
-    if (ht.n >= ht.M * LOAD) return 0;
+    if (ht.n + 1 >= ht.M * LOAD) return 0;
     int i = Hash(ht, x.Maso);
-    Node* p = ht.table[i].head;
-
-    while (p) {
-        if (p->data.Maso == x.Maso) return 0;
-        p = p->next;
-    }
-
     AddTail(ht.table[i], x);
     ht.n++;
     return 1;

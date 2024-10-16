@@ -8,12 +8,12 @@ class Animal {
 private:
     std::string sound;
 public:
-    virtual void makeSound() const;
-    virtual int giveMilk() const;
-    virtual std::vector<Animal*>giveBirth() const;
+    virtual void makeSound() const = 0;
+    virtual int giveMilk() const = 0;
+    virtual std::vector<Animal*>giveBirth() const = 0;
 };
 
-class Farm {
+class Farm : public Animal {
 public:
     std::vector<Animal*> Animal;
 };
@@ -23,9 +23,9 @@ public:
     Cow();
     ~Cow();
 
-    void makeSound() const;
-    int giveMilk() const;
-    std::vector<Cow*>giveBirth() const;
+    virtual void makeSound() const;
+    virtual int giveMilk() const;
+    virtual std::vector<Animal*>giveBirth() const;
 };
 
 
@@ -36,9 +36,9 @@ public:
     Sheep();
     ~Sheep();
 
-    void makeSound() const;
-    int giveMilk() const;
-    std::vector<Sheep*>giveBirth() const;
+    virtual void makeSound() const;
+    virtual int giveMilk() const;
+    virtual std::vector<Animal*>giveBirth() const;
 };
 
 class Goat : public Animal {
@@ -48,9 +48,9 @@ public:
     Goat();
     ~Goat();
 
-    void makeSound() const;
-    int giveMilk() const;
-    std::vector<Goat*>giveBirth() const;
+    virtual void makeSound() const;
+    virtual int giveMilk() const;
+    virtual std::vector<Animal*>giveBirth() const;
 };
 
 #endif

@@ -1,0 +1,1 @@
+{"name":"Local: A","url":"c:\\Users\\Admin\\Competitive-Programming\\CLAOJ\\A.cpp","tests":[{"id":1721106123957,"input":"6\n7\n1\n2\n3\n2000000000\n763243547","output":"3\n0\n0\n1\n999999999\n381621773"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\Admin\\Competitive-Programming\\CLAOJ\\A.cpp","group":"local","local":true}

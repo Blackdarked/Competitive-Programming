@@ -60,55 +60,81 @@ ll ans = 0;
 mt19937 rd(chrono::steady_clock::now().time_since_epoch().count());
 int Rand(int l, int r) { return l + rd() % (r - l + 1); }
 
-void print(const vll& a, int l, int r) {
-    rep(i, 0, a.size()) {
-        if (i == l) cout << "[ ";
-        cout << a[i] << ' ';
-        if (i == r) cout << "] ";
-    }
-    cout << nl;
-}
+// void print(const vll& a, int l, int r) {
+//     rep(i, 0, a.size()) {
+//         if (i == l) cout << "[ ";
+//         cout << a[i] << ' ';
+//         if (i == r) cout << "] ";
+//     }
+//     cout << nl;
+// }
 
-void merge(vll& arr, int l, int m, int r) {
-    int n1 = m - l + 1, n2 = r - m;
-    vector<ll> a(n1), b(n2);
-    rep(i, 0, n1) a[i] = arr[l + i];
-    rep(i, 0, n2) b[i] = arr[m + 1 + i];
+// void merge(vll& arr, int l, int m, int r) {
+//     int n1 = m - l + 1, n2 = r - m;
+//     vector<ll> a(n1), b(n2);
+//     rep(i, 0, n1) a[i] = arr[l + i];
+//     rep(i, 0, n2) b[i] = arr[m + 1 + i];
 
-    int i = 0, j = 0, k = l;
+//     int i = 0, j = 0, k = l;
+//     while (i < a.size() and j < b.size()) {
+//         if (a[i] <= b[j]) {
+//             arr[k++] = a[i++];
+//         }
+//         else {
+//             arr[k++] = b[j++];
+//         }
+//     }
+
+//     while (i < a.size()) {
+//         arr[k++] = a[i++];
+//     }
+
+//     while (j < b.size()) {
+//         arr[k++] = b[j++];
+//     }
+// }
+
+// void MergeSort(vll& a, int l, int r) {
+//     if (l < r) {
+//         int m = (l + r) >> 1;
+//         MergeSort(a, l, m);
+//         MergeSort(a, m + 1, r);
+//         merge(a, l, m, r);
+//         print(a, l, r);
+//     }
+// }
+
+
+void Merge(vi& v, int s, int m, int e) {
+    int n1 = m - s + 1, n2 = e - m;
+    vi a(n1), b(n2);
+    rep(i, 0, n1) a[i] = v[s + i];
+    rep(i, 0, n2) b[i] = v[m + i + 1];
+
+    int i = 0, j = 0, k = s;
     while (i < a.size() and j < b.size()) {
-        if (a[i] <= b[j]) {
-            arr[k++] = a[i++];
-        }
-        else {
-            arr[k++] = b[j++];
-        }
+        if (a[i] <= b[j]) v[k++] = a[i++];
+        else v[k++] = b[j++];
     }
 
-    while (i < a.size()) {
-        arr[k++] = a[i++];
-    }
-
-    while (j < b.size()) {
-        arr[k++] = b[j++];
-    }
+    while (i < a.size()) { v[k++] = a[i++]; }
+    while (j < b.size()) { v[k++] = b[j++]; }
 }
 
-void MergeSort(vll& a, int l, int r) {
-    if (l < r) {
-        int m = (l + r) >> 1;
-        MergeSort(a, l, m);
-        MergeSort(a, m + 1, r);
-        merge(a, l, m, r);
-        print(a, l, r);
+void MergeSort(vi& v, int s, int e) {
+    if (s < e) {
+        int m = (s + e) >> 1;
+        MergeSort(v, s, m);
+        MergeSort(v, m + 1, e);
+        Merge(v, s, m, e);
     }
 }
-
 
 void solve() {
-    int n; cin >> n; vll c(n);
-    TRAV(c) { cin >> e; }
-    MergeSort(c, 0, n - 1);
+    int n; cin >> n; vi v(n);
+    TRAV(v) { cin >> e; }
+    MergeSort(v, 0, n - 1);
+    TRAV(v) { cout << e << ' '; }
 }
 
 

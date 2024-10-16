@@ -59,7 +59,7 @@ public:
                 }
                 hgt++;
             }
-            };
+        };
         bfs(root, h);
         return h;
     }
